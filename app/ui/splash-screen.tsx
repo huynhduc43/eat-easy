@@ -1,14 +1,14 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 export default function SlashScreen() {
   return (
-    <div className="relative w-screen h-screen overflow-hidden">
-      <div className="border md:border-2 rounded-full border-[#FFDFCF] border-opacity-20 absolute -left-48 -top-10 md:-left-[448px] md:-top-40">
-        <div className="md:border-2 rounded-full m-0 md:m-12 border-[#FFDFCF] border-opacity-0 md:border-opacity-20">
-          <div className="border md:border-2 rounded-full m-6 md:m-12 border-[#FFDFCF] border-opacity-40">
-            <div className="border md:border-2 rounded-full m-6 md:m-12 border-[#FFDFCF] border-opacity-60">
-              <div className="border md:border-2 rounded-full m-6 md:m-12 border-[#FFDFCF] border-opacity-80">
-                <div className="border md:border-2 rounded-full m-6 md:m-12 p-4 md:p-9 border-[#FFDFCF]">
+    <div className="relative h-screen w-screen overflow-hidden">
+      <div className="absolute -left-48 -top-10 rounded-full border border-[#FFDFCF] border-opacity-20 md:-left-[448px] md:-top-40 md:border-2">
+        <div className="m-0 rounded-full border-[#FFDFCF] border-opacity-0 md:m-12 md:border-2 md:border-opacity-20">
+          <div className="m-6 rounded-full border border-[#FFDFCF] border-opacity-40 md:m-12 md:border-2">
+            <div className="m-6 rounded-full border border-[#FFDFCF] border-opacity-60 md:m-12 md:border-2">
+              <div className="m-6 rounded-full border border-[#FFDFCF] border-opacity-80 md:m-12 md:border-2">
+                <div className="m-6 rounded-full border border-[#FFDFCF] p-4 md:m-12 md:border-2 md:p-9">
                   <Image
                     src="/foods/food-splash-1-mobile.png"
                     width={200}
@@ -30,24 +30,24 @@ export default function SlashScreen() {
         </div>
       </div>
       <div className="">
-        <div className="absolute bottom-11 left-10 ">
+        <div className="absolute bottom-11 left-10">
           <div className="flex flex-col text-6xl md:flex-row">
-            <div className="text-my-neutral-700 font-medium">Eat</div>
-            <div className="text-[#FF7B2C] font-bold">Easy</div>
+            <div className="font-medium text-my-neutral-700">Eat</div>
+            <div className="font-bold text-[#FF7B2C]">Easy</div>
           </div>
-          <div className="text-[18px] w-[560px] leading-8 pt-6 hidden md:block relative z-10 text-my-neutral-600">
+          <div className="relative z-10 hidden w-[560px] pt-6 text-[18px] leading-8 text-my-neutral-600 md:block">
             Are you tired of scrolling through menus and struggling to decide
             what to order? Our new restaurant app has got you covered with
             personalized recommendations from our digital assistant.
           </div>
         </div>
 
-        <div className="border md:border-2 rounded-full border-[#FFDFCF] border-opacity-20 absolute -bottom-16 -right-52 md:-bottom-52 md:-right-[444px]">
-          <div className="md:border-2 rounded-full m-0 md:m-12 border-[#FFDFCF] border-opacity-0 md:border-opacity-20">
-            <div className="border md:border-2 rounded-full m-6 md:m-12 border-[#FFDFCF] border-opacity-40">
-              <div className="border md:border-2 rounded-full m-6 md:m-12 border-[#FFDFCF] border-opacity-60">
-                <div className="border md:border-2 rounded-full m-6 md:m-12 border-[#FFDFCF] border-opacity-80">
-                  <div className="border md:border-2 rounded-full m-6 md:m-12 p-4 md:p-9 border-[#FFDFCF]">
+        <div className="absolute -bottom-16 -right-52 rounded-full border border-[#FFDFCF] border-opacity-20 md:-bottom-52 md:-right-[444px] md:border-2">
+          <div className="m-0 rounded-full border-[#FFDFCF] border-opacity-0 md:m-12 md:border-2 md:border-opacity-20">
+            <div className="m-6 rounded-full border border-[#FFDFCF] border-opacity-40 md:m-12 md:border-2">
+              <div className="m-6 rounded-full border border-[#FFDFCF] border-opacity-60 md:m-12 md:border-2">
+                <div className="m-6 rounded-full border border-[#FFDFCF] border-opacity-80 md:m-12 md:border-2">
+                  <div className="m-6 rounded-full border border-[#FFDFCF] p-4 md:m-12 md:border-2 md:p-9">
                     <Image
                       src="/foods/food-splash-2-mobile.png"
                       width={200}

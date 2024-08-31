@@ -1,12 +1,13 @@
-"use client";
+'use client';
 
-import type { Metadata, Viewport } from "next";
-import { Mulish } from "next/font/google";
-import "./globals.css";
-import SplashScreen from "@/app/ui/splash-screen";
-import { useState, useEffect } from "react";
+import type { Metadata, Viewport } from 'next';
+import { Mulish } from 'next/font/google';
+import SplashScreen from '@/app/ui/splash-screen';
+import { useState, useEffect } from 'react';
 
-const inter = Mulish({ subsets: ["latin"] });
+import './globals.css';
+
+const inter = Mulish({ subsets: ['latin'] });
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
@@ -15,7 +16,7 @@ const inter = Mulish({ subsets: ["latin"] });
 
 export const viewport: Viewport = {
   initialScale: 1,
-  width: "device-width",
+  width: 'device-width',
 };
 
 export default function RootLayout({
