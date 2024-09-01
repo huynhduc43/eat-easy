@@ -1,8 +1,21 @@
+'use client';
+
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export default function SlashScreen() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, []);
+
+  if (!isLoading) return null;
+
   return (
-    <div className="relative h-screen w-screen overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
       <div className="absolute -left-48 -top-10 rounded-full border border-[#FFDFCF] border-opacity-20 md:-left-[448px] md:-top-40 md:border-2">
         <div className="m-0 rounded-full border-[#FFDFCF] border-opacity-0 md:m-12 md:border-2 md:border-opacity-20">
           <div className="m-6 rounded-full border border-[#FFDFCF] border-opacity-40 md:m-12 md:border-2">
