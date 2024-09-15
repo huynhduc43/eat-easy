@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { ProgressBar } from '../ui/components';
 
 export default function DashboardLayout({
   children, // will be a page or nested layout
@@ -26,12 +27,18 @@ export default function DashboardLayout({
                 />
               </div>
             </div>
+
             <div className="flex flex-col items-center justify-between gap-4">
-              <div className="text-[1.9rem] leading-10 text-my-neutral-700">
-                Full contactless experience
+              <div className="flex justify-center">
+                <ProgressBar totalStep={4} currentStep={2} />
               </div>
-              <div className="text-my-neutral-500">
-                From ordering to paying, that’s all contactless
+              <div>
+                <div className="mb-[14px] text-[1.9rem] leading-10 text-my-neutral-700">
+                  Full contactless experience
+                </div>
+                <div className="text-my-neutral-500">
+                  From ordering to paying, that’s all contactless
+                </div>
               </div>
               <div className="text-[1.7rem] leading-10">
                 <span className="text-my-neutral-700">Eat</span>
