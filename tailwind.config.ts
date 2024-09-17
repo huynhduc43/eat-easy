@@ -106,6 +106,12 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      width: {
+        'webkit-fill': '-webkit-fill-available',
+      },
+      height: {
+        'webkit-fill': '-webkit-fill-available',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
