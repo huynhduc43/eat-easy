@@ -2,9 +2,11 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function SlashScreen() {
   const [isLoading, setIsLoading] = useState(true);
+  const pathname = usePathname();
 
   useEffect(() => {
     setTimeout(() => {
@@ -12,7 +14,7 @@ export default function SlashScreen() {
     }, 3000);
   }, []);
 
-  if (!isLoading) return null;
+  if (!isLoading || pathname !== '/') return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
