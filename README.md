@@ -1,5 +1,31 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Project structure
+
+```shell
+.
+├── README.md                       # README file
+├── .github                         # GitHub folder
+├── .husky                          # Husky configuration
+├── .storybook                      # Storybook folder
+├── .vscode                         # VSCode configuration
+├── public                          # Public assets folder
+├── app                             # Next JS App (App Router)
+│   ├── components                  # Shared UI components
+│   ├── lib                         # Contains reusable utility functions and data fetching functions
+│   ├── locales                     # Locales folder (i18n messages)
+│   ├── models                      # Database models
+│   ├── styles                      # Styles folder
+│   ├── templates                   # Templates folder
+│   ├── types                       # Type definitions
+│   ├── utils                       # Utilities folder
+│   ├── validations                 # Validation schemas
+│   └── fonts.ts                    # Define fonts
+├── tests
+├── tailwind.config.js              # Tailwind CSS configuration
+└── tsconfig.json                   # TypeScript configuration
+```
+
 ## Getting Started
 
 First, run the development server:

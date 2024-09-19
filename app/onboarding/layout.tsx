@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { Progress, ProgressBar } from '../ui/components';
+
+import { Progress } from '@/app/components';
 
 export default function DashboardLayout({
   children, // will be a page or nested layout
@@ -13,7 +14,7 @@ export default function DashboardLayout({
       <div className="flex h-screen">
         <div className="flex-1">{children}</div>
         <div className="box-content h-screen flex-1">
-          <div className="h-web h-webkit-fill m-[30px] flex flex-col justify-between overflow-hidden rounded-3xl bg-my-neutral-0 px-10 py-[30px]">
+          <div className="h-web m-[30px] flex h-webkit-fill flex-col justify-between overflow-hidden rounded-3xl bg-my-neutral-0 px-10 py-[30px]">
             <div className="relative my-[52px] flex h-[580px] items-center justify-center bg-white">
               <div className="absolute rounded-full border border-orange-200 md:h-[290px] md:w-[290px] lg:h-[390px] lg:w-[390px] xl:h-[580px] xl:w-[580px]"></div>
               <div className="absolute rounded-full border border-orange-200 md:h-56 md:w-56 lg:h-[304px] lg:w-[304px] xl:h-[410px] xl:w-[410px]"></div>
@@ -25,6 +26,7 @@ export default function DashboardLayout({
                   width={202}
                   height={298}
                   className="md:w-32 lg:w-44 xl:w-[202px]"
+                  priority
                 />
               </div>
             </div>
