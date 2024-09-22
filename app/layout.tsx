@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import type { Metadata, Viewport } from 'next';
 
 import { mulish } from '@/app/fonts';
@@ -18,7 +19,7 @@ export const viewport: Viewport = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">
