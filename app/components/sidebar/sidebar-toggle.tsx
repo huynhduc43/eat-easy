@@ -10,7 +10,7 @@ interface SidebarToggleProps {
 
 export function SidebarToggle({ isOpen, setIsOpen }: SidebarToggleProps) {
   return (
-    <div className="invisible absolute -right-[16px] top-28 z-20 lg:visible">
+    <div className="invisible absolute -right-[16px] top-[115px] z-20 lg:visible">
       <Button
         onClick={() => setIsOpen?.()}
         className="h-9 w-9 rounded-full"

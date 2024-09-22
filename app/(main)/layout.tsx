@@ -7,7 +7,7 @@ import { Sidebar } from '@/app/components/sidebar';
 import { useSidebarToggle } from '@/app/hooks';
 import { cn } from '@/app/lib/utils';
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default function MainLayout({ children }: { children: ReactNode }) {
   const sidebar = useStore(useSidebarToggle, (state) => state);
 
   if (!sidebar) return null;

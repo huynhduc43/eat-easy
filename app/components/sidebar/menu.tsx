@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 
 import { getMenuList } from '@/app/lib/menu-list';
 import {
-  Button,
   Tooltip,
   ScrollArea,
   TooltipTrigger,
@@ -25,9 +24,16 @@ export function Menu({ isOpen }: MenuProps) {
   const menuList = getMenuList(pathname);
 
   return (
-    <ScrollArea className="[&>div>div[style]]:!block">
-      <nav className="mt-8 h-full w-full">
-        <ul className="flex min-h-[calc(100vh-48px-36px-16px-32px)] flex-col items-start space-y-1 px-2 lg:min-h-[calc(100vh-32px-40px-32px)]">
+    <ScrollArea className="text-my-neutral-0 [&>div>div[style]]:!block">
+      <nav className="h-full w-full">
+        <ul
+          className={cn(
+            'flex min-h-[calc(100vh-80px-1px-224px-30px)] flex-col items-start space-y-1 px-[30px]',
+            isOpen
+              ? 'lg:min-h-[calc(100vh-80px-1px-150px-30px)]'
+              : 'lg:min-h-[calc(100vh-80px-1px-224px-30px)]'
+          )}
+        >
           {menuList.map(({ groupLabel, menus }, index) => (
             <li className={cn('w-full', groupLabel ? 'pt-5' : '')} key={index}>
               {(isOpen && groupLabel) || isOpen === undefined ? (
@@ -63,39 +69,41 @@ export function Menu({ isOpen }: MenuProps) {
                       <TooltipProvider disableHoverableContent>
                         <Tooltip delayDuration={100}>
                           <TooltipTrigger asChild>
-                            <Button
-                              variant={active ? 'secondary' : 'ghost'}
-                              className={cn(
-                                'mb-1 h-10 w-full justify-start',
-                                isOpen ? '' : 'h-12 w-12'
-                              )}
-                              asChild
-                            >
+                            <div className={cn(isOpen ? '' : 'h-12 w-12')}>
                               <Link
                                 href={href}
                                 className={cn(
-                                  isOpen === false
-                                    ? 'flex justify-center'
-                                    : 'mr-4'
+                                  'flex',
+                                  'group items-center px-0',
+                                  isOpen === false ? 'justify-center' : 'mr-4'
                                 )}
                               >
                                 <span
-                                  className={cn(isOpen === false ? '' : 'mr-4')}
+                                  className={cn(
+                                    'rounded-2xl p-[15px] group-hover:bg-my-secondary-700',
+                                    isOpen === false
+                                      ? ''
+                                      : 'mr-[10px] bg-white/15',
+                                    active ? 'bg-my-secondary-700' : ''
+                                  )}
                                 >
                                   <Icon size={18} />
                                 </span>
                                 <p
                                   className={cn(
-                                    'max-w-[200px] truncate',
+                                    'max-w-[200px] truncate font-medium group-hover:text-my-secondary-700',
                                     isOpen === false
                                       ? '-translate-x-96 opacity-0'
-                                      : 'translate-x-0 opacity-100'
+                                      : 'translate-x-0 opacity-100',
+                                    active
+                                      ? 'font-bold text-my-secondary-700'
+                                      : ''
                                   )}
                                 >
                                   {label}
                                 </p>
                               </Link>
-                            </Button>
+                            </div>
                           </TooltipTrigger>
                           {isOpen === false && (
                             <TooltipContent side="right">
@@ -119,30 +127,45 @@ export function Menu({ isOpen }: MenuProps) {
               )}
             </li>
           ))}
-          <li className="flex w-full grow items-end">
+          <li
+            className={cn(
+              'flex w-full grow items-end',
+              isOpen ? '' : 'justify-center'
+            )}
+          >
             <TooltipProvider disableHoverableContent>
               <Tooltip delayDuration={100}>
                 <TooltipTrigger asChild>
-                  <Button
-                    onClick={() => {}}
-                    variant="outline"
-                    className="mt-5 h-10 w-full justify-center"
+                  <div
+                    className={cn(
+                      isOpen
+                        ? 'group flex cursor-pointer items-center px-0'
+                        : 'flex h-12 w-12'
+                    )}
+                    onClick={() => console.log('Logout called')}
                   >
-                    <span className={cn(isOpen === false ? '' : 'mr-4')}>
+                    <span
+                      className={cn(
+                        'rounded-2xl bg-white/15 p-[15px] group-hover:bg-my-secondary-700',
+                        isOpen ? 'mr-[10px]' : ''
+                      )}
+                    >
                       <LogOut size={18} />
                     </span>
                     <p
                       className={cn(
-                        'whitespace-nowrap',
-                        isOpen === false ? 'hidden opacity-0' : 'opacity-100'
+                        'max-w-[200px] truncate font-medium group-hover:text-my-secondary-700',
+                        isOpen === false
+                          ? '-translate-x-96 opacity-0'
+                          : 'translate-x-0 opacity-100'
                       )}
                     >
-                      Sign out
+                      Logout
                     </p>
-                  </Button>
+                  </div>
                 </TooltipTrigger>
                 {isOpen === false && (
-                  <TooltipContent side="right">Sign out</TooltipContent>
+                  <TooltipContent side="right">Logout</TooltipContent>
                 )}
               </Tooltip>
             </TooltipProvider>
