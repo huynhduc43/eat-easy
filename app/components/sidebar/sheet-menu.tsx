@@ -1,15 +1,18 @@
 import Link from 'next/link';
 import { MenuIcon } from 'lucide-react';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 import {
   Sheet,
   Button,
   Avatar,
+  SheetTitle,
   SheetHeader,
   AvatarImage,
   SheetTrigger,
   SheetContent,
   AvatarFallback,
+  SheetDescription,
 } from '@/app/components/common';
 import { Menu } from '@/app/components/sidebar';
 
@@ -21,6 +24,10 @@ export function SheetMenu() {
           <MenuIcon size={20} />
         </Button>
       </SheetTrigger>
+      <VisuallyHidden>
+        <SheetTitle>Sidebar</SheetTitle>
+        <SheetDescription>Sidebar</SheetDescription>
+      </VisuallyHidden>
       <SheetContent
         className="flex h-full flex-col !rounded-r-[20px] border-0 bg-my-neutral-900 px-0 sm:w-72"
         side="left"
