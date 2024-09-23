@@ -12,6 +12,7 @@ import {
 import { useSidebarToggle } from '@/app/hooks';
 import { cn } from '@/app/lib/utils';
 import { Menu, SidebarToggle } from '@/app/components/sidebar';
+import Image from 'next/image';
 
 export function Sidebar() {
   const sidebar = useStore(useSidebarToggle, (state) => state);
@@ -37,7 +38,16 @@ export function Sidebar() {
           variant="link"
           asChild
         >
-          <Link href="/dashboard" className="flex items-center">
+          <Link
+            href="/dashboard"
+            className="flex w-fit items-center gap-1 self-center"
+          >
+            <Image
+              src="/images/eat-easy-logo.png"
+              alt="EatEasy"
+              width={40}
+              height={40}
+            />
             <div className="text-2xl leading-10">
               <span className="text-my-neutral-100">Eat</span>
               <span className="font-bold text-my-tertiary-700">Easy</span>
@@ -78,7 +88,10 @@ export function Sidebar() {
             <p className="max-w-[110px] truncate text-base">Carl Huynh</p>
             <Link
               href="/onboarding"
-              className={cn(sidebar.isOpen ? '' : 'text-sm leading-[22px]')}
+              className={cn(
+                'underline decoration-solid',
+                sidebar.isOpen ? '' : 'text-sm leading-[22px]'
+              )}
             >
               View Profile
             </Link>
