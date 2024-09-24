@@ -3,14 +3,13 @@
 import * as React from 'react';
 import { useTheme } from 'next-themes';
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
-
-import { Button } from '@/app/components/common';
 import {
   Tooltip,
   TooltipTrigger,
-  TooltipContent,
   TooltipProvider,
 } from '@radix-ui/react-tooltip';
+
+import { Button } from '@/app/components/common';
 
 export function ModeToggle() {
   const { setTheme, theme } = useTheme();
@@ -20,7 +19,7 @@ export function ModeToggle() {
       <Tooltip delayDuration={100}>
         <TooltipTrigger asChild>
           <Button
-            className="mr-2 h-8 w-8 rounded-full bg-background"
+            className="mr-2 h-8 w-8 rounded-full border-my-neutral-400 bg-background"
             variant="outline"
             size="icon"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -30,7 +29,6 @@ export function ModeToggle() {
             <span className="sr-only">Switch Theme</span>
           </Button>
         </TooltipTrigger>
-        <TooltipContent side="bottom">Switch Theme</TooltipContent>
       </Tooltip>
     </TooltipProvider>
   );
