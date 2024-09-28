@@ -12,6 +12,7 @@ import {
 import { useSidebarToggle } from '@/app/hooks';
 import { cn } from '@/app/lib/utils';
 import { Menu, SidebarToggle } from '@/app/components/sidebar';
+import Image from 'next/image';
 
 export function Sidebar() {
   const sidebar = useStore(useSidebarToggle, (state) => state);
@@ -21,12 +22,12 @@ export function Sidebar() {
   return (
     <aside
       className={cn(
-        'fixed left-0 top-0 z-20 h-screen -translate-x-full transition-[width] duration-300 ease-in-out lg:translate-x-0',
+        'fixed left-0 top-0 z-20 h-screen -translate-x-full bg-background transition-[width] duration-300 ease-in-out lg:translate-x-0',
         sidebar?.isOpen === false ? 'w-36' : 'w-[260px]'
       )}
     >
       <SidebarToggle isOpen={sidebar?.isOpen} setIsOpen={sidebar?.setIsOpen} />
-      <div className="relative flex h-full flex-col overflow-y-auto rounded-r-[20px] bg-my-neutral-800 shadow-md dark:shadow-zinc-800">
+      <div className="relative flex h-full flex-col overflow-y-auto rounded-r-[20px] bg-my-neutral-800 shadow-md dark:bg-my-neutral-900">
         <Button
           className={cn(
             'h-20 min-h-20 transition-transform duration-300 ease-in-out',
@@ -37,7 +38,16 @@ export function Sidebar() {
           variant="link"
           asChild
         >
-          <Link href="/dashboard" className="flex items-center">
+          <Link
+            href="/dashboard"
+            className="flex w-fit items-center gap-1 self-center"
+          >
+            <Image
+              src="/images/eat-easy-logo.png"
+              alt="EatEasy"
+              width={40}
+              height={40}
+            />
             <div className="text-2xl leading-10">
               <span className="text-my-neutral-100">Eat</span>
               <span className="font-bold text-my-tertiary-700">Easy</span>
@@ -54,13 +64,13 @@ export function Sidebar() {
           <div className="relative flex justify-center">
             <div
               className={cn(
-                'absolute -inset-[14px] h-24 w-24 rounded-full border-2 border-gray-700',
+                'absolute -inset-[14px] h-24 w-24 rounded-full border-2 border-[#8C85B0]/5',
                 sidebar.isOpen ? '' : '-left-[7px]'
               )}
             ></div>
             <div
               className={cn(
-                'absolute -inset-[7px] h-[82px] w-[82px] rounded-full border-2 border-gray-600',
+                'absolute -inset-[7px] h-[82px] w-[82px] rounded-full border-2 border-[#8C85B0]/20',
                 sidebar.isOpen ? '' : 'left-0'
               )}
             ></div>
@@ -78,7 +88,10 @@ export function Sidebar() {
             <p className="max-w-[110px] truncate text-base">Carl Huynh</p>
             <Link
               href="/onboarding"
-              className={cn(sidebar.isOpen ? '' : 'text-sm leading-[22px]')}
+              className={cn(
+                'underline decoration-solid',
+                sidebar.isOpen ? '' : 'text-sm leading-[22px]'
+              )}
             >
               View Profile
             </Link>
