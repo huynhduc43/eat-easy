@@ -1,9 +1,13 @@
+import { useTranslations } from 'next-intl';
+
 import { ContentLayout } from '@/app/components';
 
 export default function Home() {
+  const t = useTranslations('HomePage');
+
   return (
     <ContentLayout title="Home">
-      <div>Home</div>
+      <div>{t('title')}</div>
     </ContentLayout>
   );
 }

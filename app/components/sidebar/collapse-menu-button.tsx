@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
 import { ChevronDown, Dot, LucideIcon } from 'lucide-react';
 import { DropdownMenuArrow } from '@radix-ui/react-dropdown-menu';
@@ -22,6 +21,7 @@ import {
   DropdownMenuContent,
   DropdownMenuSeparator,
 } from '@/app/components/common';
+import { Link } from '@/i18n/routing';
 
 type Submenu = {
   href: string;

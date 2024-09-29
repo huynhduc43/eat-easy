@@ -1,7 +1,7 @@
 'use client';
 
-import Link from 'next/link';
 import { useStore } from 'zustand';
+import Image from 'next/image';
 
 import {
   Avatar,
@@ -12,7 +12,7 @@ import {
 import { useSidebarToggle } from '@/app/hooks';
 import { cn } from '@/app/lib/utils';
 import { Menu, SidebarToggle } from '@/app/components/sidebar';
-import Image from 'next/image';
+import { Link } from '@/i18n/routing';
 
 export function Sidebar() {
   const sidebar = useStore(useSidebarToggle, (state) => state);

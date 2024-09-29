@@ -1,4 +1,4 @@
-import { ModeToggle } from '@/app/components';
+import { LanguageSwitcher, ModeToggle } from '@/app/components';
 import { SheetMenu } from '@/app/components/sidebar';
 
 interface NavbarProps {
@@ -15,6 +15,7 @@ export function Navbar({ title }: NavbarProps) {
         </div>
         <div className="flex flex-1 items-center justify-end">
           <ModeToggle />
+          <LanguageSwitcher />
         </div>
       </div>
     </header>
