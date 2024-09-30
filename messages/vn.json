@@ -1,4 +1,8 @@
 {
+  "Common": {
+    "ok": "OK",
+    "cancel": "Huỷ"
+  },
   "HomePage": {
     "title": "Trang chủ"
   }

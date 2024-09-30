@@ -3,5 +3,5 @@
   "rules": {
     "import/no-duplicates": "error"
   },
-  "ignorePatterns":["*.d.ts"]
+  "ignorePatterns": ["*.d.ts"]
 }
