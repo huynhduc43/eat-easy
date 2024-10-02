@@ -2,6 +2,7 @@
 
 import { Ellipsis, LogOut } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 import { getMenuList } from '@/app/lib/menu-list';
 import {
@@ -22,6 +23,7 @@ interface MenuProps {
 export function Menu({ isOpen }: MenuProps) {
   const pathname = usePathname();
   const menuList = getMenuList(pathname);
+  const t = useTranslations('Layout.sidebar');
 
   return (
     <ScrollArea className="text-my-neutral-0 [&>div>div[style]]:!block">
@@ -100,14 +102,14 @@ export function Menu({ isOpen }: MenuProps) {
                                       : ''
                                   )}
                                 >
-                                  {label}
+                                  {t(label)}
                                 </p>
                               </Link>
                             </div>
                           </TooltipTrigger>
                           {isOpen === false && (
                             <TooltipContent side="right">
-                              {label}
+                              {t(label)}
                             </TooltipContent>
                           )}
                         </Tooltip>
@@ -117,7 +119,7 @@ export function Menu({ isOpen }: MenuProps) {
                     <div className="flex w-full justify-center" key={index}>
                       <CollapseMenuButton
                         icon={Icon}
-                        label={label}
+                        label={t(label)}
                         active={active}
                         submenus={submenus}
                         isOpen={isOpen}
@@ -160,12 +162,12 @@ export function Menu({ isOpen }: MenuProps) {
                           : 'translate-x-0 opacity-100'
                       )}
                     >
-                      Logout
+                      {t('logout')}
                     </p>
                   </div>
                 </TooltipTrigger>
                 {isOpen === false && (
-                  <TooltipContent side="right">Logout</TooltipContent>
+                  <TooltipContent side="right">{t('logout')}</TooltipContent>
                 )}
               </Tooltip>
             </TooltipProvider>

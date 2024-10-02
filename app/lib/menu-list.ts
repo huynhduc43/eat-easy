@@ -1,16 +1,17 @@
+import { Messages } from '@/global';
 import { LucideIcon, BookText, Heart, House } from 'lucide-react';
 
 type Submenu = {
   href: string;
-  label: string;
+  label: keyof Messages['Layout']['sidebar'];
   active: boolean;
 };
 
 type Menu = {
   href: string;
-  label: string;
   active: boolean;
   icon: LucideIcon;
+  label: keyof Messages['Layout']['sidebar'];
   submenus: Submenu[];
 };
 
@@ -26,7 +27,7 @@ export function getMenuList(pathname: string): Group[] {
       menus: [
         {
           href: '/home',
-          label: 'Home',
+          label: 'home',
           active: pathname.includes('/home'),
           icon: House,
           submenus: [],
@@ -38,7 +39,7 @@ export function getMenuList(pathname: string): Group[] {
       menus: [
         {
           href: '/recipes',
-          label: 'Recipes',
+          label: 'recipes',
           active: pathname.includes('/recipes'),
           icon: BookText,
           submenus: [],
@@ -50,7 +51,7 @@ export function getMenuList(pathname: string): Group[] {
       menus: [
         {
           href: '/favorites',
-          label: 'Favorites',
+          label: 'favorites',
           active: pathname.includes('/favorites'),
           icon: Heart,
           submenus: [],

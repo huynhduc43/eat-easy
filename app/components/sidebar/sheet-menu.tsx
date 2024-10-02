@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { MenuIcon } from 'lucide-react';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { useTranslations } from 'next-intl';
 
 import {
   Sheet,
@@ -17,6 +18,8 @@ import {
 import { Menu } from '@/app/components/sidebar';
 
 export function SheetMenu() {
+  const t = useTranslations('Layout.sidebar');
+
   return (
     <Sheet>
       <SheetTrigger className="lg:hidden" asChild>
@@ -25,8 +28,8 @@ export function SheetMenu() {
         </Button>
       </SheetTrigger>
       <VisuallyHidden>
-        <SheetTitle>Sidebar</SheetTitle>
-        <SheetDescription>Sidebar</SheetDescription>
+        <SheetTitle>{t('title')}</SheetTitle>
+        <SheetDescription>{t('title')}</SheetDescription>
       </VisuallyHidden>
       <SheetContent
         className="flex h-full flex-col !rounded-r-[20px] border-0 bg-my-neutral-900 px-0 sm:w-72"
@@ -56,13 +59,13 @@ export function SheetMenu() {
                   alt="Carl Huynh"
                 />
                 <AvatarFallback className="text-my-neutral-800">
-                  Avatar
+                  {t('avatar')}
                 </AvatarFallback>
               </Avatar>
             </div>
             <div className="flex flex-col justify-center gap-[6px]">
               <p className="max-w-[110px] truncate text-base">Carl Huynh</p>
-              <Link href="/onboarding">View Profile</Link>
+              <Link href="/onboarding">{t('view_profile')}</Link>
             </div>
           </div>
         </SheetHeader>

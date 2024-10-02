@@ -1,7 +1,25 @@
 {
   "Common": {
     "ok": "OK",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "close": "Close"
+  },
+  "Layout": {
+    "language": {
+      "title": "Language",
+      "english": "English",
+      "vietnam": "Vietnam"
+    },
+    "switch_theme": "Switch Theme",
+    "sidebar": {
+      "title": "Sidebar",
+      "avatar": "Avatar",
+      "view_profile": "View Profile",
+      "logout": "Logout",
+      "home": "Home",
+      "recipes": "Recipes",
+      "favorites": "Favorites"
+    }
   },
   "HomePage": {
     "title": "Home"

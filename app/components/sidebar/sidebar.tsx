@@ -2,6 +2,7 @@
 
 import { useStore } from 'zustand';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 import {
   Avatar,
@@ -16,6 +17,7 @@ import { Link } from '@/i18n/routing';
 
 export function Sidebar() {
   const sidebar = useStore(useSidebarToggle, (state) => state);
+  const t = useTranslations('Layout.sidebar');
 
   if (!sidebar) return null;
 
@@ -80,7 +82,7 @@ export function Sidebar() {
                 alt="Carl Huynh"
               />
               <AvatarFallback className="text-my-neutral-800">
-                Avatar
+                {t('avatar')}
               </AvatarFallback>
             </Avatar>
           </div>
@@ -93,7 +95,7 @@ export function Sidebar() {
                 sidebar.isOpen ? '' : 'text-sm leading-[22px]'
               )}
             >
-              View Profile
+              {t('view_profile')}
             </Link>
           </div>
         </div>
