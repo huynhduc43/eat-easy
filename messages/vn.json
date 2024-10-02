@@ -1,7 +1,25 @@
 {
   "Common": {
     "ok": "OK",
-    "cancel": "Huỷ"
+    "cancel": "Huỷ",
+    "close": "Đóng"
+  },
+  "Layout": {
+    "language": {
+      "title": "Ngôn ngữ",
+      "english": "Tiếng Anh",
+      "vietnam": "Tiếng Việt"
+    },
+    "switch_theme": "Đổi giao diện",
+    "sidebar": {
+      "title": "Thanh bên",
+      "avatar": "Ảnh đại diện",
+      "view_profile": "Xem hồ sơ",
+      "logout": "Đăng xuất",
+      "home": "Trang chủ",
+      "recipes": "Công thức",
+      "favorites": "Yêu thích"
+    }
   },
   "HomePage": {
     "title": "Trang chủ"

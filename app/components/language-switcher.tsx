@@ -1,7 +1,7 @@
 'use client';
 
 import { GlobeIcon } from 'lucide-react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import {
   DropdownMenu,
@@ -18,6 +18,7 @@ export function LanguageSwitcher() {
   const locale = useLocale() as Locale;
   const router = useRouter();
   const pathname = usePathname();
+  const t = useTranslations('Layout.language');
 
   const handleLocaleChange = (newLocale: Locale) => {
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
@@ -32,7 +33,7 @@ export function LanguageSwitcher() {
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>Language</DropdownMenuLabel>
+        <DropdownMenuLabel>{t('title')}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuCheckboxItem
           checked={locale === 'en'}
@@ -40,7 +41,7 @@ export function LanguageSwitcher() {
             handleLocaleChange('en');
           }}
         >
-          English
+          {t('english')}
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
           checked={locale === 'vn'}
@@ -48,7 +49,7 @@ export function LanguageSwitcher() {
             handleLocaleChange('vn');
           }}
         >
-          Vietnam
+          {t('vietnam')}
         </DropdownMenuCheckboxItem>
       </DropdownMenuContent>
     </DropdownMenu>

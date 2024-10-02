@@ -8,11 +8,13 @@ import {
   TooltipTrigger,
   TooltipProvider,
 } from '@radix-ui/react-tooltip';
+import { useTranslations } from 'next-intl';
 
 import { Button } from '@/app/components/common';
 
 export function ModeToggle() {
   const { setTheme, theme } = useTheme();
+  const t = useTranslations('Layout');
 
   return (
     <TooltipProvider disableHoverableContent>
@@ -26,7 +28,7 @@ export function ModeToggle() {
           >
             <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-transform duration-500 ease-in-out dark:rotate-0 dark:scale-100" />
             <MoonIcon className="scale-1000 absolute h-[1.2rem] w-[1.2rem] rotate-0 transition-transform duration-500 ease-in-out dark:-rotate-90 dark:scale-0" />
-            <span className="sr-only">Switch Theme</span>
+            <span className="sr-only">{t('switch_theme')}</span>
           </Button>
         </TooltipTrigger>
       </Tooltip>
