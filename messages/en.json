@@ -23,5 +23,8 @@
   },
   "HomePage": {
     "title": "Home"
+  },
+  "Recipes": {
+    "title": "Recipes"
   }
 }
