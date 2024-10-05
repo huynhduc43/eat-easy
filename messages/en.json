@@ -25,6 +25,7 @@
     "title": "Home"
   },
   "Recipes": {
-    "title": "Recipes"
+    "title": "Recipes",
+    "no_data_found": "No data found."
   }
 }
