@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import useSWR from 'swr';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
@@ -22,38 +21,18 @@ import {
   TooltipProvider,
 } from '@/app/components/common';
 import { cn } from '@/app/lib/utils';
-
-import { TCategory, TMeal } from './types';
-
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
-
-function useMealsByCategory(category: string) {
-  const { data, isLoading } = useSWR<{ meals: TMeal[] }>(
-    `http://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`,
-    fetcher
-  );
-
-  return {
-    meals: data?.meals ?? [],
-    isLoading,
-  };
-}
+import { useCategories, useMealsByCategory } from '@/hooks/apis';
 
 export default function Recipes() {
   const [selectedCategory, setSelectedCategory] = useState<string>('Beef');
-
-  const { data: categoriesData, isLoading: isLoadingCategories } = useSWR<{
-    categories: TCategory[];
-  }>('https://www.themealdb.com/api/json/v1/1/categories.php', fetcher);
-
-  const { meals, isLoading: isLoadingMeals } =
-    useMealsByCategory(selectedCategory);
+  const { categories, isLoadingCategories } = useCategories();
+  const { meals, isLoadingMeals } = useMealsByCategory(selectedCategory);
 
   const t = useTranslations('Recipes');
 
   return (
     <ContentLayout title={t('title')}>
-      <ScrollArea>
+      <ScrollArea className="px-6 sm:px-[42px]">
         <div className="flex gap-2">
           {isLoadingCategories &&
             Array(10)
@@ -64,12 +43,12 @@ export default function Recipes() {
                   className="h-12 w-32 rounded-2xl px-6 py-3"
                 />
               ))}
-          {categoriesData?.categories.map((category) => (
+          {categories.map((category) => (
             <div
               className={cn(
-                'cursor-pointer rounded-2xl px-6 py-3 hover:bg-my-secondary-700',
+                'cursor-pointer rounded-2xl px-6 py-3 text-my-neutral-600 hover:bg-my-secondary-700 hover:text-my-neutral-0 dark:text-my-neutral-100 dark:hover:text-my-neutral-800',
                 selectedCategory === category.strCategory &&
-                  'rounded-2xl bg-my-secondary-700 px-6 py-3'
+                  'rounded-2xl bg-my-secondary-700 px-6 py-3 text-my-neutral-0 dark:text-my-neutral-800'
               )}
               onClick={() => setSelectedCategory(category.strCategory)}
               key={category.idCategory}
@@ -83,24 +62,24 @@ export default function Recipes() {
       <Carousel className="mt-[102px]">
         {!meals.length && !isLoadingMeals && <div>{t('no_data_found')}</div>}
         {isLoadingMeals && (
-          <div className="flex gap-4">
+          <div className="flex gap-4 pl-6 sm:pl-[42px]">
             {Array(2)
               .fill('')
               .map((_, index) => (
                 <Skeleton
                   key={index}
-                  className="h-[174px] w-[177px] rounded-xl"
+                  className="h-[198px] w-[177px] rounded-xl"
                 />
               ))}
           </div>
         )}
-        <CarouselContent>
+        <CarouselContent className="pb-4 pl-6 sm:pl-[42px]">
           {meals.map((meal) => (
             <CarouselItem
               key={meal.idMeal}
-              className="basis-1/2 pb-4 sm:basis-1/3 lg:basis-1/4 xl:basis-1/6"
+              className="b m-0 basis-1/2 pb-4 sm:basis-1/3 lg:basis-1/4 xl:basis-1/6"
             >
-              <Card className="m-3 flex h-[198px] w-[177px] flex-col items-center px-4 py-3">
+              <Card className="flex h-[198px] w-[177px] flex-col items-center border-none px-4 py-3 shadow-lg dark:bg-my-neutral-700">
                 <Image
                   width={100}
                   height={100}
@@ -111,7 +90,7 @@ export default function Recipes() {
                 <TooltipProvider>
                   <Tooltip delayDuration={100}>
                     <TooltipTrigger>
-                      <div className="mt-6 line-clamp-2 max-w-[145px] text-center">
+                      <div className="mt-6 line-clamp-2 max-w-[145px] text-center text-my-neutral-800 dark:text-my-neutral-0">
                         {meal.strMeal}
                       </div>
                     </TooltipTrigger>
@@ -124,8 +103,8 @@ export default function Recipes() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <PrevButton className="size-[46px]" />
-        <NextButton className="size-[46px]" />
+        <PrevButton className="right-[104px] size-[46px] dark:bg-my-neutral-700" />
+        <NextButton className="right-[42px] size-[46px] dark:bg-my-neutral-700" />
       </Carousel>
     </ContentLayout>
   );
