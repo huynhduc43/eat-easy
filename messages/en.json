@@ -23,5 +23,9 @@
   },
   "HomePage": {
     "title": "Home"
+  },
+  "Recipes": {
+    "title": "Recipes",
+    "no_data_found": "No data found."
   }
 }

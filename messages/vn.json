@@ -23,5 +23,9 @@
   },
   "HomePage": {
     "title": "Trang chủ"
+  },
+  "Recipes": {
+    "title": "Công thức",
+    "no_data_found": "Không có dữ liệu."
   }
 }
