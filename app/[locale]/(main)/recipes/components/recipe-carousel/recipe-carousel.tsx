@@ -18,6 +18,7 @@ import {
   CarouselContent,
 } from '@/app/components/common';
 import { useMealsByCategory } from '@/hooks/apis';
+import { ScrollToTopButton } from '@/app/components';
 
 export default function RecipeCarousel({ category }: { category: TCategory }) {
   const { meals, isLoadingMeals } = useMealsByCategory(category.strCategory);
@@ -76,6 +77,7 @@ export default function RecipeCarousel({ category }: { category: TCategory }) {
         <PrevButton className="right-[104px] size-[46px] dark:bg-my-neutral-700" />
         <NextButton className="right-[42px] size-[46px] dark:bg-my-neutral-700" />
       </Carousel>
+      <ScrollToTopButton />
     </div>
   );
 }
