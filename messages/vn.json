@@ -26,6 +26,7 @@
   },
   "Recipes": {
     "title": "Công thức",
-    "no_data_found": "Không có dữ liệu."
+    "no_data_found": "Không có dữ liệu.",
+    "search": "Tìm kiếm"
   }
 }

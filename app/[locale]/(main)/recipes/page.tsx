@@ -7,7 +7,10 @@ import { ContentLayout } from '@/app/components';
 import { Skeleton, ScrollBar, ScrollArea } from '@/app/components/common';
 import { cn } from '@/app/lib/utils';
 import { useCategories } from '@/hooks/apis';
-import { RecipeCarousel } from '@/app/[locale]/(main)/recipes/components';
+import {
+  SearchBar,
+  RecipeCarousel,
+} from '@/app/[locale]/(main)/recipes/components';
 
 export default function Recipes() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -17,6 +20,7 @@ export default function Recipes() {
 
   return (
     <ContentLayout title={t('title')}>
+      <SearchBar />
       <ScrollArea className="px-6 sm:px-[42px]">
         <div className="flex gap-2">
           {isLoadingCategories &&
