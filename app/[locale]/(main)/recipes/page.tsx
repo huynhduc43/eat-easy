@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { ContentLayout } from '@/app/components';
@@ -11,16 +11,33 @@ import {
   SearchBar,
   RecipeCarousel,
 } from '@/app/[locale]/(main)/recipes/components';
+import { fetcher } from '@/app/lib/fetcher';
+import useSWR from 'swr';
 
 export default function Recipes() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [searchText, setSearchText] = useState<string>('');
   const { categories, isLoadingCategories } = useCategories();
 
   const t = useTranslations('Recipes');
 
+  const handleSearch = useCallback((value: string) => {
+    setSearchText(value);
+  }, []);
+
+  const { data } = useSWR(
+    `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`,
+    fetcher,
+    {
+      errorRetryCount: 3,
+    }
+  );
+
+  console.log('🚀 ~ Recipes ~ data:', data);
+
   return (
     <ContentLayout title={t('title')}>
-      <SearchBar />
+      <SearchBar onSearch={handleSearch} />
       <ScrollArea className="px-6 sm:px-[42px]">
         <div className="flex gap-2">
           {isLoadingCategories &&
