@@ -5,7 +5,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
 import { mulish } from '@/app/fonts';
-import SplashScreen from '@/app/components';
+import SplashScreen, { ScrollToTopButton } from '@/app/components';
 
 import '../globals.css';
 
@@ -37,6 +37,7 @@ export default async function RootLayout({
           <SplashScreen />
           <ThemeProvider attribute="class">{children}</ThemeProvider>
         </NextIntlClientProvider>
+        <ScrollToTopButton />
       </body>
     </html>
   );
