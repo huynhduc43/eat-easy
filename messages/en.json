@@ -26,6 +26,10 @@
   },
   "Recipes": {
     "title": "Recipes",
-    "no_data_found": "No data found."
+    "no_data_found": "No data found.",
+    "filters": "Filters",
+    "search": "Search",
+    "search_result": "{count, plural, =0 {No results} =1 {1 result} other {# results}} with \"{searchText}\"",
+    "searching": "Searching..."
   }
 }
