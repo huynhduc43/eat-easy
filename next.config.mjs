@@ -1,5 +1,7 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 
+const locales = ['en', 'vi'];
+
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
@@ -9,18 +11,11 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: '/:locale',
-        destination: '/:locale/home',
+      ...locales.map((locale) => ({
+        source: `/${locale}`,
+        destination: `/${locale}/home`,
         permanent: true,
-        locale: false,
-        has: [
-          {
-            type: 'host',
-            value: '(?!.*\\.(ico|png|jpg|jpeg|svg|webp|gif))$',
-          },
-        ],
-      },
+      })),
     ];
   },
 };

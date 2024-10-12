@@ -9,7 +9,7 @@ export const useMealsByCategory = (category: string) => {
     isLoading: isLoadingMeals,
     error: mealsError,
   } = useSWR<{ meals: TMeal[] }>(
-    `http://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`,
+    `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`,
     fetcher,
     {
       errorRetryCount: 3,
