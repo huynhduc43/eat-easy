@@ -22,7 +22,7 @@ export default function DashboardLayout({
               <div className="absolute rounded-full bg-my-tertiary-200 md:h-40 md:w-40 lg:h-[230px] lg:w-[230px]"></div>
               <div className="relative flex items-center justify-center">
                 <Image
-                  src="/phone-desktop.png"
+                  src="/images/phone-desktop.png"
                   alt="phone-desktop"
                   width={202}
                   height={298}

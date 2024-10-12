@@ -25,14 +25,14 @@ export default function SlashScreen() {
               <div className="m-6 rounded-full border border-[#FFDFCF] border-opacity-80 md:m-12 md:border-2">
                 <div className="m-6 rounded-full border border-[#FFDFCF] p-4 md:m-12 md:border-2 md:p-9">
                   <Image
-                    src="/foods/food-splash-1-mobile.png"
+                    src="/images/foods/food-splash-1-mobile.png"
                     width={200}
                     height={200}
                     className="block md:hidden"
                     alt="Food splash 1"
                   />
                   <Image
-                    src="/foods/food-splash-1-desktop.png"
+                    src="/images/foods/food-splash-1-desktop.png"
                     width={390}
                     height={390}
                     className="hidden md:block"
@@ -64,14 +64,14 @@ export default function SlashScreen() {
                 <div className="m-6 rounded-full border border-[#FFDFCF] border-opacity-80 md:m-12 md:border-2">
                   <div className="m-6 rounded-full border border-[#FFDFCF] p-4 md:m-12 md:border-2 md:p-9">
                     <Image
-                      src="/foods/food-splash-2-mobile.png"
+                      src="/images/foods/food-splash-2-mobile.png"
                       width={200}
                       height={200}
                       className="block md:hidden"
                       alt="Food splash 2"
                     />
                     <Image
-                      src="/foods/food-splash-2-desktop.png"
+                      src="/images/foods/food-splash-2-desktop.png"
                       width={390}
                       height={390}
                       className="hidden md:block"
