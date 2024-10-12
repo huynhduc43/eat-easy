@@ -2,6 +2,7 @@ import useSWR from 'swr';
 
 import { TMeal } from '@/app/[locale]/(main)/recipes/types';
 import { fetcher } from '@/app/lib/fetcher';
+import { apiConfig } from '@/config';
 
 export const useMealsByCategory = (category: string) => {
   const {
@@ -9,7 +10,7 @@ export const useMealsByCategory = (category: string) => {
     isLoading: isLoadingMeals,
     error: mealsError,
   } = useSWR<{ meals: TMeal[] }>(
-    `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`,
+    `${apiConfig.baseUrl}/${apiConfig.version}/${apiConfig.apiKey}/filter.php?c=${category}`,
     fetcher,
     {
       errorRetryCount: 3,

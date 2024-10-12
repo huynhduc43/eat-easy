@@ -24,6 +24,7 @@ import {
 } from '@/app/[locale]/(main)/recipes/components';
 import { fetcher } from '@/app/lib/fetcher';
 import { TMeal } from '@/app/[locale]/(main)/recipes/types';
+import { apiConfig } from '@/config';
 
 export default function Recipes() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -37,7 +38,7 @@ export default function Recipes() {
   }, []);
 
   const { data: mealsData, isLoading } = useSWR<{ meals: TMeal[] }>(
-    `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`,
+    `${apiConfig.baseUrl}/${apiConfig.version}/${apiConfig.apiKey}/search.php?s=${searchText}`,
     fetcher,
     {
       errorRetryCount: 3,
