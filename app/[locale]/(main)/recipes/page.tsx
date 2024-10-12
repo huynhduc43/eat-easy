@@ -64,7 +64,7 @@ export default function Recipes() {
               {mealsData?.meals?.map((meal) => (
                 <Card
                   key={meal.idMeal}
-                  className="flex h-[198px] w-[160px] flex-col items-center border-none px-4 py-3 shadow-lg dark:bg-my-neutral-700"
+                  className="flex h-[198px] w-[160px] flex-col items-center border-none px-4 py-3 shadow-lg dark:bg-my-neutral-700 sm:w-[177px]"
                 >
                   <Image
                     width={100}

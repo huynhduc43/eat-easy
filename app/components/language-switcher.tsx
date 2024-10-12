@@ -44,9 +44,9 @@ export function LanguageSwitcher() {
           {t('english')}
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
-          checked={locale === 'vn'}
+          checked={locale === 'vi'}
           onClick={() => {
-            handleLocaleChange('vn');
+            handleLocaleChange('vi');
           }}
         >
           {t('vietnam')}
