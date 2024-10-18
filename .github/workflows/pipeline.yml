@@ -21,9 +21,9 @@ jobs:
           version: 9 # Set the desired pnpm version
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 18
           cache: 'pnpm'
 
       # Create .env.local file
