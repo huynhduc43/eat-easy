@@ -65,3 +65,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 1. https://github.com/salimi-my/shadcn-ui-sidebar
 2. https://www.themealdb.com/
+3. https://200lab.io/blog/huong-dan-deploy-ung-dung-nextjs-voi-github-action/
