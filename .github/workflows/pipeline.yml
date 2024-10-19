@@ -40,6 +40,11 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
 
+      - name: Output image tag
+        run: |
+          echo "Docker image version: ${{ steps.meta.outputs.version }}"
+        id: image_version
+
   deploy:
     name: Deploy to AWS EC2
     needs: build-and-push
@@ -60,11 +65,11 @@ jobs:
           port: 22
           script: |
             # Pull the Docker image with the tag from the previous job
-            docker pull ${{ secrets.DOCKER_USERNAME }}/eat-easy:${{ env.DOCKER_METADATA_OUTPUT_VERSION }}
+            docker pull ${{ secrets.DOCKER_USERNAME }}/eat-easy:${{ needs.build.outputs.image_version }}
 
             # Stop and remove the existing container (if any)
             docker stop eat-easy || true
             docker rm eat-easy || true
 
             # Run the new container
-            docker run -d --name eat-easy -p 80:3000 ${{ secrets.DOCKER_USERNAME }}/eat-easy:${{ env.DOCKER_METADATA_OUTPUT_VERSION }}
+            docker run -d --name eat-easy -p 80:3000 ${{ secrets.DOCKER_USERNAME }}/eat-easy:${{ needs.build.outputs.image_version }}
