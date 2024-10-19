@@ -10,9 +10,6 @@ jobs:
   build-and-push:
     name: Build and push image to DockerHub
     runs-on: ubuntu-latest
-    # Output versionTag so it can be used in other jobs
-    outputs:
-      versionTag: ${{ steps.extract_version.outputs.version_tag }}
 
     steps:
       - name: Checkout code
@@ -35,17 +32,6 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ secrets.DOCKER_USERNAME }}/eat-easy
-          tags: |
-            type=ref,event=tag    # This captures the `v*` tag (e.g., v1.0.0)
-            type=raw,value=latest # This captures the `latest` tag
-
-      - name: Extract version tag (v*)
-        id: extract_version
-        run: |
-          # This extracts the `v*` tag from the comma-separated tags list and stores it in an output
-          echo "version_tag=$(echo ${{ steps.meta.outputs.tags }} | tr ',' '\n' | grep '^v')" >> $GITHUB_OUTPUT
-          outputs:
-            version_tag: ${{ steps.extract_version.outputs.version_tag }}
 
       - name: Build and push to DockerHub
         uses: docker/build-push-action@v6
@@ -74,11 +60,11 @@ jobs:
           port: 22
           script: |
             # Pull the Docker image with the tag from the previous job
-            docker pull ${{ secrets.DOCKER_USERNAME }}/eat-easy:${{ needs.build-and-push.outputs.versionTag }}
+            docker pull ${{ secrets.DOCKER_USERNAME }}/eat-easy:${{ env.DOCKER_METADATA_OUTPUT_VERSION }}
 
             # Stop and remove the existing container (if any)
             docker stop eat-easy || true
             docker rm eat-easy || true
 
             # Run the new container
-            docker run -d --name eat-easy -p 80:3000 ${{ secrets.DOCKER_USERNAME }}/eat-easy:${{ needs.build-and-push.outputs.versionTag }}
+            docker run -d --name eat-easy -p 80:3000 ${{ secrets.DOCKER_USERNAME }}/eat-easy:${{ env.DOCKER_METADATA_OUTPUT_VERSION }}
