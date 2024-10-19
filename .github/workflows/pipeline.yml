@@ -26,6 +26,9 @@ jobs:
           node-version: 18
           cache: 'pnpm'
 
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+
       # Create .env.local file
       - name: Create .env.local file
         run: |
