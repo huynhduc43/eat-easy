@@ -31,5 +31,10 @@
     "search": "Tìm kiếm",
     "search_result": "{count, plural, =0 {Không có kết quả} =1 {1 kết quả} other {# kết quả}} với \"{searchText}\"",
     "searching": "Đang tìm kiếm..."
+  },
+  "MealDetails": {
+    "title": "Chi tiết",
+    "Ingredients": "Thành phần",
+    "Instructions": "Hướng dẫn"
   }
 }

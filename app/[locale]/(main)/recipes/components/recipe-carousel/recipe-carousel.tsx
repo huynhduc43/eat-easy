@@ -18,6 +18,7 @@ import {
   CarouselContent,
 } from '@/app/components/common';
 import { useMealsByCategory } from '@/hooks/apis';
+import { Link } from '@/i18n/routing';
 
 export default function RecipeCarousel({ category }: { category: TCategory }) {
   const { meals, isLoadingMeals } = useMealsByCategory(category.strCategory);
@@ -57,18 +58,20 @@ export default function RecipeCarousel({ category }: { category: TCategory }) {
                   className="rounded-full"
                   src={meal.strMealThumb}
                 />
-                <TooltipProvider>
-                  <Tooltip delayDuration={100}>
-                    <TooltipTrigger>
-                      <div className="mt-6 line-clamp-2 max-w-[145px] text-center text-my-neutral-800 dark:text-my-neutral-0">
+                <Link href={`/recipes/${meal.idMeal}`}>
+                  <TooltipProvider>
+                    <Tooltip delayDuration={100}>
+                      <TooltipTrigger>
+                        <div className="mt-6 line-clamp-2 max-w-[145px] text-center text-my-neutral-800 dark:text-my-neutral-0">
+                          {meal.strMeal}
+                        </div>
+                      </TooltipTrigger>
+                      <TooltipContent side="bottom">
                         {meal.strMeal}
-                      </div>
-                    </TooltipTrigger>
-                    <TooltipContent side="bottom">
-                      {meal.strMeal}
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </Link>
               </Card>
             </CarouselItem>
           ))}
