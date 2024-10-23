@@ -60,7 +60,7 @@ const config: Config = {
           '500': '#F24343',
           '700': '#DE0F0F',
         },
-        background: 'hsl(var(--background))',
+        background: 'var(--background)',
         foreground: 'hsl(var(--foreground))',
         card: {
           DEFAULT: 'hsl(var(--card))',
@@ -71,7 +71,7 @@ const config: Config = {
           foreground: 'hsl(var(--popover-foreground))',
         },
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
+          DEFAULT: 'var(--primary)',
           foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
