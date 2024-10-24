@@ -22,7 +22,8 @@
     }
   },
   "HomePage": {
-    "title": "Home"
+    "title": "Home",
+    "Todays_Meal": "Today's Meal"
   },
   "Recipes": {
     "title": "Recipes",
