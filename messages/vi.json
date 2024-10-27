@@ -22,7 +22,8 @@
     }
   },
   "HomePage": {
-    "title": "Trang chủ"
+    "title": "Trang chủ",
+    "Todays_Meal": "Bữa ăn hôm nay"
   },
   "Recipes": {
     "title": "Công thức",
