@@ -23,7 +23,8 @@
   },
   "HomePage": {
     "title": "Home",
-    "Todays_Meal": "Today's Meal"
+    "Todays_Meal": "Today's Meal",
+    "View_details": "View details"
   },
   "Recipes": {
     "title": "Recipes",

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { ContentLayout } from '@/app/components';
 import { apiConfig } from '@/config';
 import { TMeal } from '@/app/[locale]/(main)/recipes/types';
+import { Link } from '@/i18n/routing';
 
 async function getRandomMeals(): Promise<{ meals: TMeal[] }> {
   const res = await fetch(
@@ -34,9 +35,15 @@ export default async function Home() {
             {mealDetails.strMeal}
           </p>
           {/* Fake meal description */}
-          <p className="line-clamp-6 text-my-neutral-600 dark:text-my-neutral-200">
+          <p className="mt-2 line-clamp-6 text-my-neutral-600 dark:text-my-neutral-200">
             {mealDetails.strInstructions}
           </p>
+          <Link
+            className="mt-4 block w-fit rounded-lg bg-my-primary-600 p-3 text-my-neutral-100"
+            href={`/recipes/${mealDetails.idMeal}`}
+          >
+            {t('View_details')}
+          </Link>
         </div>
         {mealDetails && (
           <div className="lg:col-span-6">
