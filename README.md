@@ -85,3 +85,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 3. https://200lab.io/blog/huong-dan-deploy-ung-dung-nextjs-voi-github-action/
 4. https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/passing-information-between-jobs
 5. https://stackoverflow.com/questions/63642807/how-can-i-find-the-right-inbound-rule-for-my-github-action-to-deploy-on-my-aws-e
+6. https://blog.logrocket.com/diving-server-actions-next-js-14/

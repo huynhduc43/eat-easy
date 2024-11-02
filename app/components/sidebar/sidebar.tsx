@@ -41,7 +41,7 @@ export function Sidebar() {
           asChild
         >
           <Link
-            href="/dashboard"
+            href="/home"
             className="flex w-fit items-center gap-1 self-center"
           >
             <Image

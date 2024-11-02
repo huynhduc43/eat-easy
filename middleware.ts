@@ -4,7 +4,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { routing } from '@/i18n/routing';
 
 export default async function middleware(request: NextRequest) {
-  const [, locale] = request.nextUrl.pathname.split('/');
+  const { pathname } = request.nextUrl;
+  const [, locale] = pathname.split('/');
+
+  if (pathname.startsWith(`/${locale}/login`)) {
+    console.log('Called login');
+  }
 
   if (locale === '') {
     return NextResponse.redirect(
