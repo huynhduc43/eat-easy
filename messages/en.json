@@ -38,5 +38,18 @@
     "title": "Details",
     "Ingredients": "Ingredients",
     "Instructions": "Instructions"
+  },
+  "SignUp": {
+    "sign_up": "Sign Up",
+    "getting_started": "Getting started! ✌️",
+    "description": "Look like you are new to us! Create an account for a complete experience.",
+    "password": "Password",
+    "form": {
+      "error": {
+        "invalid_email": "Invalid email address",
+        "password_min_length": "Password must be at least 8 characters long",
+        "password_complexity": "Password must include at least one uppercase letter, one lowercase letter, one number, and one special character"
+      }
+    }
   }
 }

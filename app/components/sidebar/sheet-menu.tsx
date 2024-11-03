@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { MenuIcon } from 'lucide-react';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { useTranslations } from 'next-intl';
@@ -16,6 +15,7 @@ import {
   SheetDescription,
 } from '@/app/components/common';
 import { Menu } from '@/app/components/sidebar';
+import { Link } from '@/i18n/routing';
 
 export function SheetMenu() {
   const t = useTranslations('Layout.sidebar');
@@ -41,7 +41,7 @@ export function SheetMenu() {
             variant="link"
             asChild
           >
-            <Link href="/dashboard" className="flex items-center">
+            <Link href="/home" className="flex items-center">
               <div className="text-2xl leading-10">
                 <span className="text-my-neutral-100">Eat</span>
                 <span className="font-bold text-my-tertiary-700">Easy</span>
