@@ -3,24 +3,31 @@
 import type { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from 'next-intl';
 
-import { Button, Input } from '@/app/components/common';
+import {
+  Form,
+  Input,
+  Button,
+  FormItem,
+  FormField,
+  FormControl,
+} from '@/app/components/common';
+import { FormMessageIntl } from '@/app/components';
 
-import { signUpSchema } from './sign-up-schema';
+import { SignUpSchema } from './sign-up-schema';
 
 export default function SignUp() {
-  const { handleSubmit, register, reset, formState } = useForm<
-    z.infer<typeof signUpSchema>
-  >({
-    resolver: zodResolver(signUpSchema),
+  const t = useTranslations('SignUp');
+  const form = useForm<z.infer<typeof SignUpSchema>>({
+    resolver: zodResolver(SignUpSchema),
     defaultValues: {
       email: '',
       password: '',
     },
   });
-  console.log('🚀 ~ SignUp ~ formState:', formState.errors);
 
-  const handleSignUp = handleSubmit(async (data) => {
+  const handleSignUp = form.handleSubmit(async (data) => {
     console.log('🚀 ~ handleSignUp ~ data:', data);
     await fetch(`/api/counter`, {
       method: 'PUT',
@@ -30,7 +37,7 @@ export default function SignUp() {
       body: JSON.stringify(data),
     });
 
-    reset();
+    form.reset();
   });
 
   return (
@@ -38,35 +45,60 @@ export default function SignUp() {
       <div className="w-[480px]">
         <div className="mb-10 text-center">
           <h1 className="text-4xl text-my-neutral-800 dark:text-my-neutral-100">
-            Getting started! ✌️
+            {t('getting_started')}
           </h1>
           <p className="mt-4 text-my-neutral-600 dark:text-my-neutral-200">
-            Look like you are new to us! Create an account for a complete
-            experience.
+            {t('description')}
           </p>
         </div>
-        <form onSubmit={handleSignUp}>
-          <Input
-            type="email"
-            placeholder="Email"
-            autoComplete="email"
-            {...register('email')}
-            className="mb-6"
-          />
-          <Input
-            type="password"
-            placeholder="Password"
-            autoComplete="current-password"
-            {...register('password')}
-          />
-          <Button
-            type="submit"
-            disabled={formState.isSubmitting}
-            className="mt-20 w-full"
-          >
-            Sign up
-          </Button>
-        </form>
+        <Form {...form}>
+          <form onSubmit={handleSignUp}>
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field, formState: { errors } }) => (
+                <FormItem className="mb-6">
+                  <FormControl>
+                    <Input
+                      type="email"
+                      placeholder="Email"
+                      autoComplete="email"
+                      variant={!!errors.email && 'error'}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessageIntl />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field, formState: { errors } }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      type="password"
+                      placeholder={t('password')}
+                      autoComplete="current-password"
+                      variant={!!errors.password && 'error'}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessageIntl />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              disabled={form.formState.isSubmitting}
+              className="mt-20 h-[54px] w-full"
+            >
+              {t('sign_up')}
+            </Button>
+          </form>
+        </Form>
       </div>
     </div>
   );

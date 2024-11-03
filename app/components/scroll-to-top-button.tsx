@@ -36,7 +36,7 @@ export function ScrollToTopButton() {
       {isVisible && (
         <Button
           title="Scroll to top"
-          variant="outline"
+          variant="secondary"
           onClick={scrollToTop}
           className="size-12 rounded-full bg-my-secondary-500 p-3 text-my-neutral-100 shadow-none transition duration-300 hover:bg-my-secondary-700 hover:text-my-neutral-100"
         >

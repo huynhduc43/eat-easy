@@ -26,7 +26,7 @@ export function ModeToggle() {
             size="icon"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           >
-            <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-transform duration-500 ease-in-out dark:rotate-0 dark:scale-100" />
+            <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-transform duration-500 ease-in-out dark:rotate-0 dark:scale-100 dark:text-my-neutral-0" />
             <MoonIcon className="scale-1000 absolute h-[1.2rem] w-[1.2rem] rotate-0 transition-transform duration-500 ease-in-out dark:-rotate-90 dark:scale-0" />
             <span className="sr-only">{t('switch_theme')}</span>
           </Button>

@@ -9,13 +9,13 @@ import { z } from 'zod';
  *   - At least 8 characters long.
  *   - Contains at least one uppercase letter, one lowercase letter, one number, and one special character.
  */
-export const signUpSchema = z.object({
+export const SignUpSchema = z.object({
   /**
    * Validates the email field.
    * - Must be a string.
    * - Must be a valid email address.
    */
-  email: z.string().email({ message: 'Invalid email address' }),
+  email: z.string().email({ message: 'SignUp.form.error.invalid_email' }),
 
   /**
    * Validates the password field.
@@ -25,9 +25,8 @@ export const signUpSchema = z.object({
    */
   password: z
     .string()
-    .min(8, { message: 'Password must be at least 8 characters long' })
+    .min(8, { message: 'SignUp.form.error.password_min_length' })
     .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])/, {
-      message:
-        'Password must include at least one uppercase letter, one lowercase letter, one number, and one special character',
+      message: 'SignUp.form.error.password_complexity',
     }),
 });

@@ -28,8 +28,11 @@ export function LanguageSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <div className="flex size-8 items-center justify-center rounded-full border border-my-neutral-400">
-          <GlobeIcon size={20} />
+        <div className="flex size-8 items-center justify-center rounded-full border border-my-neutral-500 dark:border-my-primary-500">
+          <GlobeIcon
+            size={20}
+            className="text-my-neutral-300 hover:text-my-neutral-800 dark:text-my-neutral-0"
+          />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

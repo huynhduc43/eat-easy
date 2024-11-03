@@ -38,5 +38,18 @@
     "title": "Chi tiết",
     "Ingredients": "Thành phần",
     "Instructions": "Hướng dẫn"
+  },
+  "SignUp": {
+    "sign_up": "Đăng ký",
+    "getting_started": "Bắt đầu! ✌️",
+    "description": "Có vẻ như bạn là người mới đến với chúng tôi! Tạo tài khoản để có trải nghiệm trọn vẹn.",
+    "password": "Mật khẩu",
+    "form": {
+      "error": {
+        "invalid_email": "Địa chỉ email không hợp lệ",
+        "password_min_length": "Mật khẩu phải dài ít nhất 8 ký tự",
+        "password_complexity": "Mật khẩu phải bao gồm ít nhất một chữ cái viết hoa, một chữ cái viết thường, một số và một ký tự đặc biệt"
+      }
+    }
   }
 }
