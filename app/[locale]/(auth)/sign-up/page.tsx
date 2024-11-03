@@ -28,8 +28,7 @@ export default function SignUp() {
   });
 
   const handleSignUp = form.handleSubmit(async (data) => {
-    console.log('🚀 ~ handleSignUp ~ data:', data);
-    await fetch(`/api/counter`, {
+    await fetch(`/api/sign-up`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
