@@ -4,26 +4,52 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ```shell
 .
-├── README.md                       # README file
-├── .github                         # GitHub folder
-├── .husky                          # Husky configuration
-├── .storybook                      # Storybook folder
-├── .vscode                         # VSCode configuration
-├── public                          # Public assets folder
-├── app                             # Next JS App (App Router)
-│   ├── components                  # Shared UI components
-│   ├── lib                         # Contains reusable utility functions and data fetching functions
-│   ├── locales                     # Locales folder (i18n messages)
-│   ├── models                      # Database models
-│   ├── styles                      # Styles folder
-│   ├── templates                   # Templates folder
-│   ├── types                       # Type definitions
-│   ├── utils                       # Utilities folder
-│   ├── validations                 # Validation schemas
-│   └── fonts.ts                    # Define fonts
+├── .github              # GitHub folder
+├── .husky               # Husky configuration
+├── .storybook           # Storybook folder
+├── .vscode              # VSCode configuration
+├── app                  # Next JS App (App Router)
+│   ├── [locale]
+│   │   ├── (auth)       # Pages for auth
+│   │   ├── (main)       # Main pages
+│   │   ├── ...
+│   ├── components       # Shared UI components
+│   ├── lib              # Contains reusable utility functions and data fetching functions
+│   ├── models           # Database models
+│   ├── styles           # Styles folder
+│   ├── templates        # Templates folder
+│   ├── types            # Type definitions
+│   ├── utils            # Utilities folder
+│   ├── validations      # Validation schemas
+│   ├── favicon.icon
+│   ├── globals.css
+│   └── fonts.ts         # Define fonts
+├── config
+├── docs                 # PR template,...
+├── hooks
+├── i18n
+├── messages
+├── public               # Public assets folder
+├── .dockerignore
+├── .env.example
+├── .env.local
+├── .eslintrc.json
+├── .gitignore
+├── .prettierignore
+├── .prettierrc
+├── components.json      # Shadcn configuration
+├── docker-compose.yml
+├── Dockerfile
+├── global.d.ts
+├── middleware.ts
+├── next.config.mjs
+├── package.json
+├── pnpm-lock.yaml
 ├── tests
-├── tailwind.config.js              # Tailwind CSS configuration
-└── tsconfig.json                   # TypeScript configuration
+├── postcss.config.mjs
+├── README.md            # README file
+├── tailwind.config.js   # Tailwind CSS configuration
+└── tsconfig.json        # TypeScript configuration
 ```
 
 ## Getting Started
@@ -31,13 +57,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
