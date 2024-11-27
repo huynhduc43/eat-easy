@@ -1,3 +1,3 @@
 export type TMealDetailsProps = {
-  params: { mealId: string };
+  params: { mealId: string; locale: string };
 };
