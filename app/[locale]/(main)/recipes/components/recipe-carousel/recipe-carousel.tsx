@@ -1,14 +1,11 @@
-'use client';
-
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import { TCategory } from '@/app/[locale]/(main)/recipes/types';
+import { TCategory, TMeal } from '@/app/[locale]/(main)/recipes/types';
 import {
   Card,
   Tooltip,
   Carousel,
-  Skeleton,
   NextButton,
   PrevButton,
   CarouselItem,
@@ -17,12 +14,15 @@ import {
   TooltipProvider,
   CarouselContent,
 } from '@/app/components/common';
-import { useMealsByCategory } from '@/hooks/apis';
 import { Link } from '@/i18n/routing';
 
-export default function RecipeCarousel({ category }: { category: TCategory }) {
-  const { meals, isLoadingMeals } = useMealsByCategory(category.strCategory);
-
+export default function RecipeCarousel({
+  category,
+  meals,
+}: {
+  meals: TMeal[];
+  category: TCategory;
+}) {
   const t = useTranslations('Recipes');
 
   return (
@@ -31,19 +31,7 @@ export default function RecipeCarousel({ category }: { category: TCategory }) {
         {category.strCategory}
       </div>
       <Carousel className="mt-9">
-        {!meals.length && !isLoadingMeals && <div>{t('no_data_found')}</div>}
-        {isLoadingMeals && (
-          <div className="flex gap-4 pl-6 sm:pl-[42px]">
-            {Array(2)
-              .fill('')
-              .map((_, index) => (
-                <Skeleton
-                  key={index}
-                  className="h-[198px] w-[177px] rounded-xl"
-                />
-              ))}
-          </div>
-        )}
+        {!meals.length && <div>{t('no_data_found')}</div>}
         <CarouselContent className="pb-4 pl-6 sm:pl-[42px]">
           {meals.map((meal) => (
             <CarouselItem

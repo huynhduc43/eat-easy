@@ -1,3 +1,5 @@
+'use client';
+
 import { ChangeEvent, useMemo, useRef, useState } from 'react';
 import debounce from 'lodash.debounce';
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
@@ -8,7 +10,7 @@ import { Button, Input } from '@/app/components/common';
 
 import { TSearchBarProps } from './types';
 
-const DEBOUNCE_TIME_MS = 500;
+const DEBOUNCE_TIME_MS = 1000;
 
 export default function SearchBar({ onSearch }: TSearchBarProps) {
   const [hasValue, setHasValue] = useState<boolean>(false);

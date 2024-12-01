@@ -2,12 +2,22 @@ import { ReactNode } from 'react';
 import Image from 'next/image';
 
 import { Progress } from '@/app/components/common';
+import { routing } from '@/i18n/routing';
+import { unstable_setRequestLocale } from 'next-intl/server';
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export default function DashboardLayout({
   children, // will be a page or nested layout
+  params: { locale },
 }: {
   children: ReactNode;
+  params: { locale: string };
 }) {
+  unstable_setRequestLocale(locale);
+
   return (
     <section className="bg-[#eee]">
       {/* Include shared UI here e.g. a header or sidebar */}

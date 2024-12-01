@@ -1,11 +1,8 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
 import { ContentLayout } from '@/app/components';
-import { useMealsById } from '@/hooks/apis';
-import { TMeal } from '@/app/[locale]/(main)/recipes/types';
+import { TCategory, TMeal } from '@/app/[locale]/(main)/recipes/types';
 import {
   Badge,
   Accordion,
@@ -15,14 +12,45 @@ import {
 } from '@/app/components/common';
 import { getYouTubeVideoId } from '@/app/lib/get-youtube-video-id';
 import { cn } from '@/app/lib/utils';
+import { apiConfig } from '@/config';
+import { locales } from '@/i18n/locales';
+import { TMealsByCategoryRes, TMealsRes } from '@/hooks/apis';
 
 import { TMealDetailsProps } from './types';
 
-export default function MealDetails({ params }: TMealDetailsProps) {
-  const t = useTranslations('MealDetails');
+export async function generateStaticParams() {
+  const categories: {
+    categories: TCategory[];
+  } = await fetch(
+    `${apiConfig.baseUrl}/${apiConfig.version}/${apiConfig.apiKey}/categories.php`
+  ).then((res) => res.json());
 
-  const { meals } = useMealsById(params.mealId);
-  const mealDetails = meals?.[0];
+  const promises = [categories.categories[0]].map(async (category) => {
+    const res: TMealsByCategoryRes = await fetch(
+      `${apiConfig.baseUrl}/${apiConfig.version}/${apiConfig.apiKey}/filter.php?c=${category.strCategory}`
+    ).then((res) => res.json());
+
+    return res.meals.map((meal) => meal.idMeal);
+  });
+
+  const mealsPerCategory = await Promise.all(promises);
+  const allMeals = mealsPerCategory.flat();
+
+  return locales.flatMap((locale) =>
+    allMeals.map((mealId) => ({ locale, mealId: mealId }))
+  );
+}
+
+export default async function MealDetails({ params }: TMealDetailsProps) {
+  unstable_setRequestLocale(params.locale);
+  const t = await getTranslations('MealDetails');
+
+  const res: TMealsRes = await fetch(
+    `${apiConfig.baseUrl}/${apiConfig.version}/${apiConfig.apiKey}/lookup.php?i=${params.mealId}`,
+    { next: { revalidate: 60 * 60 } }
+  ).then((res) => res.json());
+
+  const mealDetails = res.meals?.[0];
 
   const renderIngredientsSection = (data: TMeal) =>
     Array(20)
