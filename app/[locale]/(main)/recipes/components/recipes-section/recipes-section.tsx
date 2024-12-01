@@ -21,12 +21,12 @@ import {
 } from '@/app/components/common';
 import { fetcher } from '@/app/lib/fetcher';
 import { apiConfig } from '@/config';
+import { Link } from '@/i18n/routing';
 
 import { cn } from '@/app/lib/utils';
 
 type TRecipesSectionProps = {
   categories: TCategory[];
-  locale: string;
   mealsByCategory: {
     [key: string]: TMeal[];
   };
@@ -50,6 +50,12 @@ export default function RecipesSection({
     fetcher,
     {
       errorRetryCount: 3,
+      revalidateOnFocus: false,
+      revalidateOnMount: false,
+      revalidateOnReconnect: false,
+      refreshWhenOffline: false,
+      refreshWhenHidden: false,
+      refreshInterval: 0,
     }
   );
 
@@ -71,30 +77,29 @@ export default function RecipesSection({
             </div>
             <div className="mt-4 flex flex-wrap gap-1 sm:gap-3 xl:gap-6">
               {mealsData?.meals?.map((meal: any) => (
-                <Card
-                  key={meal.idMeal}
-                  className="flex h-[198px] w-[160px] flex-col items-center border-none px-4 py-3 shadow-lg dark:bg-my-neutral-700 sm:w-[177px]"
-                >
-                  <Image
-                    width={100}
-                    height={100}
-                    alt={meal.strMeal}
-                    className="rounded-full"
-                    src={meal.strMealThumb}
-                  />
-                  <TooltipProvider>
-                    <Tooltip delayDuration={100}>
-                      <TooltipTrigger>
-                        <div className="mt-6 line-clamp-2 max-w-[145px] text-center text-my-neutral-800 dark:text-my-neutral-0">
+                <Link key={meal.idMeal} href={`/recipes/${meal.idMeal}`}>
+                  <Card className="flex h-[198px] w-[160px] flex-col items-center border-none px-4 py-3 shadow-lg dark:bg-my-neutral-700 sm:w-[177px]">
+                    <Image
+                      width={100}
+                      height={100}
+                      alt={meal.strMeal}
+                      className="rounded-full"
+                      src={meal.strMealThumb}
+                    />
+                    <TooltipProvider>
+                      <Tooltip delayDuration={100}>
+                        <TooltipTrigger>
+                          <div className="mt-6 line-clamp-2 max-w-[145px] text-center text-my-neutral-800 dark:text-my-neutral-0">
+                            {meal.strMeal}
+                          </div>
+                        </TooltipTrigger>
+                        <TooltipContent side="bottom">
                           {meal.strMeal}
-                        </div>
-                      </TooltipTrigger>
-                      <TooltipContent side="bottom">
-                        {meal.strMeal}
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Card>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>

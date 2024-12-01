@@ -31,7 +31,6 @@ export default async function Recipes({
   return (
     <ContentLayout title={t('title')}>
       <RecipesSection
-        locale={params.locale}
         categories={categories}
         mealsByCategory={mealsByCategory}
       />
