@@ -16,6 +16,8 @@ import {
 import { FormMessageIntl } from '@/app/components';
 
 import { SignUpSchema } from './sign-up-schema';
+import { signup } from '@/app/lib/actions/auth';
+import { useFormState } from 'react-dom';
 
 export default function SignUp() {
   const t = useTranslations('SignUp');
@@ -27,17 +29,23 @@ export default function SignUp() {
     },
   });
 
-  const handleSignUp = form.handleSubmit(async (data) => {
-    await fetch(`/api/sign-up`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-
-    form.reset();
+  const [state, formAction] = useFormState(signup, {
+    email: '',
+    password: '',
   });
+  console.log('🚀 ~ SignUp ~ state:', state);
+
+  // const handleSignUp = form.handleSubmit(async (data) => {
+  //   await fetch(`/api/sign-up`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(data),
+  //   });
+
+  //   form.reset();
+  // });
 
   return (
     <div className="grid h-[calc(100vh_-_80px)] place-items-center">
@@ -51,7 +59,7 @@ export default function SignUp() {
           </p>
         </div>
         <Form {...form}>
-          <form onSubmit={handleSignUp}>
+          <form action={formAction}>
             <FormField
               control={form.control}
               name="email"
