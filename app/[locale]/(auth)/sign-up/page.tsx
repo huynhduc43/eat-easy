@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, MouseEvent } from 'react';
 import type { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -8,12 +9,11 @@ import { useTranslations } from 'next-intl';
 import {
   Form,
   Input,
-  Button,
   FormItem,
   FormField,
   FormControl,
 } from '@/app/components/common';
-import { FormMessageIntl } from '@/app/components';
+import { FormMessageIntl, SubmitButton } from '@/app/components';
 
 import { SignUpSchema } from './sign-up-schema';
 import { signup } from '@/app/lib/actions/auth';
@@ -33,19 +33,18 @@ export default function SignUp() {
     email: '',
     password: '',
   });
-  console.log('🚀 ~ SignUp ~ state:', state);
 
-  // const handleSignUp = form.handleSubmit(async (data) => {
-  //   await fetch(`/api/sign-up`, {
-  //     method: 'PUT',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(data),
-  //   });
+  const handleClickSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
+    const valid = await form.trigger();
 
-  //   form.reset();
-  // });
+    if (!valid) {
+      e.preventDefault();
+    }
+  };
+
+  useEffect(() => {
+    console.log('state: ', state);
+  }, [state]);
 
   return (
     <div className="grid h-[calc(100vh_-_80px)] place-items-center">
@@ -97,13 +96,7 @@ export default function SignUp() {
                 </FormItem>
               )}
             />
-            <Button
-              type="submit"
-              disabled={form.formState.isSubmitting}
-              className="mt-20 h-[54px] w-full"
-            >
-              {t('sign_up')}
-            </Button>
+            <SubmitButton title={t('sign_up')} onClick={handleClickSubmit} />
           </form>
         </Form>
       </div>
