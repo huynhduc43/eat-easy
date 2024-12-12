@@ -9,7 +9,7 @@ import React from 'react';
 type SubmitButtonProps = {
   title: string;
   className?: string;
-  onClick?: any;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 export function SubmitButton({ title, className, onClick }: SubmitButtonProps) {

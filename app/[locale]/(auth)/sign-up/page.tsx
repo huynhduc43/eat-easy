@@ -5,6 +5,7 @@ import type { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
+import { useFormState } from 'react-dom';
 
 import {
   Form,
@@ -14,10 +15,9 @@ import {
   FormControl,
 } from '@/app/components/common';
 import { FormMessageIntl, SubmitButton } from '@/app/components';
+import { signUp } from '@/app/lib/actions/auth';
 
 import { SignUpSchema } from './sign-up-schema';
-import { signup } from '@/app/lib/actions/auth';
-import { useFormState } from 'react-dom';
 
 export default function SignUp() {
   const t = useTranslations('SignUp');
@@ -29,12 +29,12 @@ export default function SignUp() {
     },
   });
 
-  const [state, formAction] = useFormState(signup, {
+  const [state, formAction] = useFormState(signUp, {
     email: '',
     password: '',
   });
 
-  const handleClickSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
     const valid = await form.trigger();
 
     if (!valid) {
@@ -69,7 +69,7 @@ export default function SignUp() {
                       type="email"
                       placeholder="Email"
                       autoComplete="email"
-                      variant={!!errors.email && 'error'}
+                      variant={errors.email ? 'error' : undefined}
                       {...field}
                     />
                   </FormControl>
@@ -96,7 +96,7 @@ export default function SignUp() {
                 </FormItem>
               )}
             />
-            <SubmitButton title={t('sign_up')} onClick={handleClickSubmit} />
+            <SubmitButton title={t('sign_up')} onClick={handleSubmit} />
           </form>
         </Form>
       </div>
