@@ -1,16 +1,20 @@
 'use server';
 
 import bcrypt from 'bcrypt';
-import { AxiosError } from 'axios';
+import { getTranslations } from 'next-intl/server';
 
 import { SignUpSchema } from '@/app/[locale]/(auth)/sign-up/sign-up-schema';
-import nocodb, { USERS_TABLE_ID } from '@/app/lib/actions/nocodb';
-import { CreateUserResponse } from '@/app/lib/actions/auth/auth.types';
+import { checkUserExists } from '@/app/lib/actions/users/users';
+
+import nocodb, { USERS_TABLE_ID } from '../nocodb';
+import { CreateUserResponse } from './auth.types';
 
 export async function signUp(
   prevState: any,
   formData: FormData
 ): Promise<CreateUserResponse> {
+  const t = await getTranslations();
+
   const validatedFields = SignUpSchema.safeParse({
     email: formData.get('email'),
     password: formData.get('password'),
@@ -24,6 +28,15 @@ export async function signUp(
   }
 
   const { email, password } = validatedFields.data;
+  const checkUserExistsRes = await checkUserExists(email);
+
+  if (checkUserExistsRes.success && checkUserExistsRes.data.isExist) {
+    return {
+      success: false,
+      error: t('SignUp.error.email_already_exists'),
+    };
+  }
+
   const salt = await bcrypt.genSalt();
   const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -41,13 +54,11 @@ export async function signUp(
       data: response.data,
     };
   } catch (error) {
-    const errorMessage =
-      (error as AxiosError).response?.data ||
-      'An error occurred during sign up.';
+    console.log('🚀 ~ error:', error);
 
     return {
       success: false,
-      error: errorMessage as string,
+      error: t('Common.error.something_went_wrong'),
     };
   }
 }

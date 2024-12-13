@@ -48,7 +48,7 @@
     "zustand": "5.0.0-rc.2"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.4",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.0",
     "@types/bcrypt": "^5.0.2",
     "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20",

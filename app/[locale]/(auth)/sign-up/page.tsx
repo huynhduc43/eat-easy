@@ -1,12 +1,14 @@
 'use client';
 
 import { useEffect, MouseEvent } from 'react';
-import type { z } from 'zod';
-import { useForm } from 'react-hook-form';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { useFormState } from 'react-dom';
+import { useForm } from 'react-hook-form';
+import type { z } from 'zod';
 
+import { FormMessageIntl, SubmitButton } from '@/app/components';
 import {
   Form,
   Input,
@@ -14,7 +16,6 @@ import {
   FormField,
   FormControl,
 } from '@/app/components/common';
-import { FormMessageIntl, SubmitButton } from '@/app/components';
 import { signUp } from '@/app/lib/actions/auth';
 
 import { SignUpSchema } from './sign-up-schema';
@@ -29,10 +30,7 @@ export default function SignUp() {
     },
   });
 
-  const [state, formAction] = useFormState(signUp, {
-    email: '',
-    password: '',
-  });
+  const [state, formAction] = useFormState(signUp, null);
 
   const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
     const valid = await form.trigger();
