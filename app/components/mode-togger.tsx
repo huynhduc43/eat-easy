@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useTheme } from 'next-themes';
+
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import {
   Tooltip,
@@ -9,6 +9,7 @@ import {
   TooltipProvider,
 } from '@radix-ui/react-tooltip';
 import { useTranslations } from 'next-intl';
+import { useTheme } from 'next-themes';
 
 import { Button } from '@/app/components/common';
 

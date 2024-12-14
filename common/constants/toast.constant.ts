@@ -1,0 +1,3 @@
+export const ERROR_TOAST_DURATION_MS = 5_000;
+
+export const SUCCESS_TOAST_DURATION_MS = 1_500;

@@ -1,10 +1,11 @@
 'use client';
 
+import React from 'react';
+
 import { useFormStatus } from 'react-dom';
 
 import { Button } from '@/app/components/common';
 import { cn } from '@/app/lib/utils';
-import React from 'react';
 
 type SubmitButtonProps = {
   title: string;

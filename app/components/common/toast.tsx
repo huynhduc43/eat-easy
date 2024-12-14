@@ -1,8 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { Cross2Icon } from '@radix-ui/react-icons';
+
 import * as ToastPrimitives from '@radix-ui/react-toast';
+import { Cross2Icon } from '@radix-ui/react-icons';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/app/lib/utils';
@@ -33,6 +34,7 @@ const toastVariants = cva(
           'border bg-white text-slate-950 dark:bg-slate-950 dark:text-slate-50',
         destructive:
           'destructive group border-red-500 bg-red-500 text-slate-50 dark:border-red-900 dark:bg-red-900 dark:text-slate-50',
+        success: 'success group border-green-500 bg-green-500 text-neutral-50',
       },
     },
     defaultVariants: {

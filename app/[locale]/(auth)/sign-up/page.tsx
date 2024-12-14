@@ -17,11 +17,20 @@ import {
   FormControl,
 } from '@/app/components/common';
 import { signUp } from '@/app/lib/actions/auth';
+import {
+  REDIRECT_DURATION_MS,
+  ERROR_TOAST_DURATION_MS,
+  SUCCESS_TOAST_DURATION_MS,
+} from '@/common/constants';
+import { useToast } from '@/hooks/use-toast';
+import { useRouter } from '@/i18n/routing';
 
 import { SignUpSchema } from './sign-up-schema';
 
 export default function SignUp() {
   const t = useTranslations('SignUp');
+  const { toast } = useToast();
+  const router = useRouter();
   const form = useForm<z.infer<typeof SignUpSchema>>({
     resolver: zodResolver(SignUpSchema),
     defaultValues: {
@@ -41,8 +50,29 @@ export default function SignUp() {
   };
 
   useEffect(() => {
-    console.log('state: ', state);
-  }, [state]);
+    if (state === null) {
+      return;
+    }
+
+    if (!state?.success) {
+      toast({
+        duration: ERROR_TOAST_DURATION_MS,
+        variant: 'destructive',
+        title: state?.error,
+      });
+      return;
+    }
+
+    toast({
+      duration: SUCCESS_TOAST_DURATION_MS,
+      title: t('redirecting_to_login'),
+      variant: 'success',
+    });
+
+    setTimeout(() => {
+      router.push('/login');
+    }, REDIRECT_DURATION_MS);
+  }, [state, toast, router, t]);
 
   return (
     <div className="grid h-[calc(100vh_-_80px)] place-items-center">

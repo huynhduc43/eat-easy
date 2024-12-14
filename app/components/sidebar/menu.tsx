@@ -1,10 +1,10 @@
 'use client';
 
-import { Ellipsis, LogOut } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+
+import { Ellipsis, LogOut } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-import { getMenuList } from '@/app/lib/menu-list';
 import {
   Tooltip,
   ScrollArea,
@@ -13,6 +13,7 @@ import {
   TooltipProvider,
 } from '@/app/components/common';
 import { CollapseMenuButton } from '@/app/components/sidebar';
+import { getMenuList } from '@/app/lib/menu-list';
 import { cn } from '@/app/lib/utils';
 import { Link } from '@/i18n/routing';
 

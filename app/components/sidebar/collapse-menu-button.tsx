@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown, Dot, LucideIcon } from 'lucide-react';
-import { DropdownMenuArrow } from '@radix-ui/react-dropdown-menu';
 
-import { cn } from '@/app/lib/utils';
+import { DropdownMenuArrow } from '@radix-ui/react-dropdown-menu';
+import { ChevronDown, Dot, LucideIcon } from 'lucide-react';
+
 import {
   Button,
   Tooltip,
@@ -21,6 +21,7 @@ import {
   DropdownMenuContent,
   DropdownMenuSeparator,
 } from '@/app/components/common';
+import { cn } from '@/app/lib/utils';
 import { Link } from '@/i18n/routing';
 
 type Submenu = {

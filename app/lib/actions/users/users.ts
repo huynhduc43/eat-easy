@@ -28,7 +28,9 @@ export async function checkUserExists(
       data: { isExist: false },
     };
   } catch (error) {
-    console.log('🚀 ~ error:', error);
+    // TODO: Handle logging
+    console.log('🚀 ~ checkUserExists error:', error);
+
     return {
       success: false,
       error: t('error.something_went_wrong'),

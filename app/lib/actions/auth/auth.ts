@@ -5,12 +5,13 @@ import { getTranslations } from 'next-intl/server';
 
 import { SignUpSchema } from '@/app/[locale]/(auth)/sign-up/sign-up-schema';
 import { checkUserExists } from '@/app/lib/actions/users/users';
+import { Role } from '@/common/enums';
 
 import nocodb, { USERS_TABLE_ID } from '../nocodb';
 import { CreateUserResponse } from './auth.types';
 
 export async function signUp(
-  prevState: any,
+  _prevState: CreateUserResponse | null,
   formData: FormData
 ): Promise<CreateUserResponse> {
   const t = await getTranslations();
@@ -46,6 +47,7 @@ export async function signUp(
       {
         email,
         password: hashedPassword,
+        role: Role.USER,
       }
     );
 
@@ -54,7 +56,8 @@ export async function signUp(
       data: response.data,
     };
   } catch (error) {
-    console.log('🚀 ~ error:', error);
+    // TODO: Handle logging
+    console.log('🚀 ~ signUp error:', error);
 
     return {
       success: false,

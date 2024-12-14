@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import { useTranslations } from 'next-intl';
 
 import { TCategory, TMeal } from '@/app/[locale]/(main)/recipes/types';

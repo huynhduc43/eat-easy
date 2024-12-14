@@ -1,0 +1,1 @@
+export const REDIRECT_DURATION_MS = 1_500;

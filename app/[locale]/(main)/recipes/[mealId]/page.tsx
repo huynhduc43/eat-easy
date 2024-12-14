@@ -1,8 +1,9 @@
 import Image from 'next/image';
+
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
-import { ContentLayout } from '@/app/components';
 import { TCategory, TMeal } from '@/app/[locale]/(main)/recipes/types';
+import { ContentLayout } from '@/app/components';
 import {
   Badge,
   Accordion,
@@ -13,8 +14,8 @@ import {
 import { getYouTubeVideoId } from '@/app/lib/get-youtube-video-id';
 import { cn } from '@/app/lib/utils';
 import { apiConfig } from '@/config';
-import { locales } from '@/i18n/locales';
 import { TMealsByCategoryRes, TMealsRes } from '@/hooks/apis';
+import { locales } from '@/i18n/locales';
 
 import { TMealDetailsProps } from './types';
 
