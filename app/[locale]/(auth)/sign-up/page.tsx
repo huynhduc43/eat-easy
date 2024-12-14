@@ -23,7 +23,7 @@ import {
   SUCCESS_TOAST_DURATION_MS,
 } from '@/common/constants';
 import { useToast } from '@/hooks/use-toast';
-import { useRouter } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 
 import { SignUpSchema } from './sign-up-schema';
 
@@ -77,13 +77,19 @@ export default function SignUp() {
   return (
     <div className="grid h-[calc(100vh_-_80px)] place-items-center">
       <div className="w-[480px]">
-        <div className="mb-10 text-center">
+        <div className="mb-4 text-center">
           <h1 className="text-4xl text-my-neutral-800 dark:text-my-neutral-100">
             {t('getting_started')}
           </h1>
           <p className="mt-4 text-my-neutral-600 dark:text-my-neutral-200">
             {t('description')}
           </p>
+        </div>
+        <div className="flex justify-center mb-10">
+          <span>{t('already_have_an_account')}&nbsp;</span>
+          <Link href="/login" className="text-my-primary-600 font-bold">
+            {t('login_now')}
+          </Link>
         </div>
         <Form {...form}>
           <form action={formAction}>
@@ -95,7 +101,7 @@ export default function SignUp() {
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="Email"
+                      placeholder={t('form.placeholder.email')}
                       autoComplete="email"
                       variant={errors.email ? 'error' : undefined}
                       {...field}
@@ -114,7 +120,7 @@ export default function SignUp() {
                   <FormControl>
                     <Input
                       type="password"
-                      placeholder={t('password')}
+                      placeholder={t('form.placeholder.password')}
                       autoComplete="current-password"
                       variant={!!errors.password && 'error'}
                       {...field}

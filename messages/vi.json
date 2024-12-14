@@ -58,5 +58,28 @@
       "email_already_exists": "Email đã tồn tại"
     },
     "redirecting_to_login": "Đang chuyển hướng đến đăng nhập..."
+  },
+
+  "Login": {
+    "login": "Đăng nhập",
+    "welcome_back": "Chào mừng trở lại! 👋",
+    "description": "Rất vui được gặp lại bạn! Đăng nhập vào tài khoản của bạn để tiếp tục.",
+    "forgot_password": "Quên mật khẩu?",
+    "form": {
+      "placeholder": {
+        "email": "Email",
+        "password": "Mật khẩu"
+      },
+      "error": {
+        "invalid_email": "Địa chỉ email không hợp lệ",
+        "password_min_length": "Mật khẩu phải có ít nhất 8 ký tự",
+        "password_complexity": "Mật khẩu phải bao gồm ít nhất một chữ in hoa, một chữ in thường, một số và một ký tự đặc biệt"
+      }
+    },
+    "error": {
+      "invalid_credentials": "Thông tin đăng nhập không chính xác"
+    },
+    "dont_have_an_account": "Bạn chưa có tài khoản?",
+    "sign_up_now": "Đăng ký ngay"
   }
 }
