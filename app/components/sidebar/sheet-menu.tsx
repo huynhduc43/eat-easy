@@ -1,5 +1,5 @@
-import { MenuIcon } from 'lucide-react';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { MenuIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import {

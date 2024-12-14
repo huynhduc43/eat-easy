@@ -1,9 +1,9 @@
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
-import { ContentLayout } from '@/app/components';
 import { RecipesSection } from '@/app/[locale]/(main)/recipes/components';
-import { fetchCategories, fetchMealsByCategory } from '@/app/lib/data';
 import { TMeal } from '@/app/[locale]/(main)/recipes/types';
+import { ContentLayout } from '@/app/components';
+import { fetchCategories, fetchMealsByCategory } from '@/app/lib/data';
 
 export default async function Recipes({
   params,

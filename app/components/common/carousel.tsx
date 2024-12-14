@@ -2,14 +2,19 @@
 'use client';
 
 import * as React from 'react';
+
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from 'embla-carousel-react';
-
-import { cn } from '@/app/lib/utils';
-import { Button } from '@/app/components/common/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+
+import { Button } from '@/app/components/common/button';
+import { cn } from '@/app/lib/utils';
+
+/* eslint-disable react/jsx-no-literals */
+
+/* eslint-disable react/jsx-no-literals */
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;

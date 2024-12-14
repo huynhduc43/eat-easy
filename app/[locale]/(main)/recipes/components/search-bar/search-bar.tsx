@@ -1,8 +1,9 @@
 'use client';
 
 import { ChangeEvent, useMemo, useRef, useState } from 'react';
-import debounce from 'lodash.debounce';
+
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
+import debounce from 'lodash.debounce';
 import { CircleX, SlidersHorizontal } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 

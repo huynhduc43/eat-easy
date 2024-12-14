@@ -1,9 +1,11 @@
 import { ReactNode } from 'react';
+
 import Image from 'next/image';
+
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 import { Progress } from '@/app/components/common';
 import { routing } from '@/i18n/routing';
-import { unstable_setRequestLocale } from 'next-intl/server';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

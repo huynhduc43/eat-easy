@@ -1,24 +1,36 @@
 'use client';
 
-import type { z } from 'zod';
-import { useForm } from 'react-hook-form';
+import { useEffect, MouseEvent } from 'react';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
+import { useFormState } from 'react-dom';
+import { useForm } from 'react-hook-form';
+import type { z } from 'zod';
 
+import { FormMessageIntl, SubmitButton } from '@/app/components';
 import {
   Form,
   Input,
-  Button,
   FormItem,
   FormField,
   FormControl,
 } from '@/app/components/common';
-import { FormMessageIntl } from '@/app/components';
+import { signUp } from '@/app/lib/actions/auth';
+import {
+  REDIRECT_DURATION_MS,
+  ERROR_TOAST_DURATION_MS,
+  SUCCESS_TOAST_DURATION_MS,
+} from '@/common/constants';
+import { useToast } from '@/hooks/use-toast';
+import { useRouter } from '@/i18n/routing';
 
 import { SignUpSchema } from './sign-up-schema';
 
 export default function SignUp() {
   const t = useTranslations('SignUp');
+  const { toast } = useToast();
+  const router = useRouter();
   const form = useForm<z.infer<typeof SignUpSchema>>({
     resolver: zodResolver(SignUpSchema),
     defaultValues: {
@@ -27,17 +39,40 @@ export default function SignUp() {
     },
   });
 
-  const handleSignUp = form.handleSubmit(async (data) => {
-    await fetch(`/api/sign-up`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
+  const [state, formAction] = useFormState(signUp, null);
+
+  const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
+    const valid = await form.trigger();
+
+    if (!valid) {
+      e.preventDefault();
+    }
+  };
+
+  useEffect(() => {
+    if (state === null) {
+      return;
+    }
+
+    if (!state?.success) {
+      toast({
+        duration: ERROR_TOAST_DURATION_MS,
+        variant: 'destructive',
+        title: state?.error,
+      });
+      return;
+    }
+
+    toast({
+      duration: SUCCESS_TOAST_DURATION_MS,
+      title: t('redirecting_to_login'),
+      variant: 'success',
     });
 
-    form.reset();
-  });
+    setTimeout(() => {
+      router.push('/login');
+    }, REDIRECT_DURATION_MS);
+  }, [state, toast, router, t]);
 
   return (
     <div className="grid h-[calc(100vh_-_80px)] place-items-center">
@@ -51,7 +86,7 @@ export default function SignUp() {
           </p>
         </div>
         <Form {...form}>
-          <form onSubmit={handleSignUp}>
+          <form action={formAction}>
             <FormField
               control={form.control}
               name="email"
@@ -62,7 +97,7 @@ export default function SignUp() {
                       type="email"
                       placeholder="Email"
                       autoComplete="email"
-                      variant={!!errors.email && 'error'}
+                      variant={errors.email ? 'error' : undefined}
                       {...field}
                     />
                   </FormControl>
@@ -89,13 +124,7 @@ export default function SignUp() {
                 </FormItem>
               )}
             />
-            <Button
-              type="submit"
-              disabled={form.formState.isSubmitting}
-              className="mt-20 h-[54px] w-full"
-            >
-              {t('sign_up')}
-            </Button>
+            <SubmitButton title={t('sign_up')} onClick={handleSubmit} />
           </form>
         </Form>
       </div>

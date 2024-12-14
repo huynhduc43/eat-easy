@@ -2,7 +2,10 @@
   "Common": {
     "ok": "OK",
     "cancel": "Cancel",
-    "close": "Close"
+    "close": "Close",
+    "error": {
+      "something_went_wrong": "Something went wrong"
+    }
   },
   "Layout": {
     "language": {
@@ -50,6 +53,10 @@
         "password_min_length": "Password must be at least 8 characters long",
         "password_complexity": "Password must include at least one uppercase letter, one lowercase letter, one number, and one special character"
       }
-    }
+    },
+    "error": {
+      "email_already_exists": "Email already exists"
+    },
+    "redirecting_to_login": "Redirecting to login..."
   }
 }

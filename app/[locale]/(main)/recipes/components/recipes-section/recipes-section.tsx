@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+
 import Image from 'next/image';
+
 import { useTranslations } from 'next-intl';
 import useSWR from 'swr';
 
@@ -20,10 +22,9 @@ import {
   TooltipProvider,
 } from '@/app/components/common';
 import { fetcher } from '@/app/lib/fetcher';
+import { cn } from '@/app/lib/utils';
 import { apiConfig } from '@/config';
 import { Link } from '@/i18n/routing';
-
-import { cn } from '@/app/lib/utils';
 
 type TRecipesSectionProps = {
   categories: TCategory[];

@@ -1,8 +1,9 @@
 'use client';
 
-import { useStore } from 'zustand';
 import Image from 'next/image';
+
 import { useTranslations } from 'next-intl';
+import { useStore } from 'zustand';
 
 import {
   Avatar,
@@ -10,9 +11,9 @@ import {
   AvatarImage,
   AvatarFallback,
 } from '@/app/components/common';
+import { Menu, SidebarToggle } from '@/app/components/sidebar';
 import { useSidebarToggle } from '@/app/hooks';
 import { cn } from '@/app/lib/utils';
-import { Menu, SidebarToggle } from '@/app/components/sidebar';
 import { Link } from '@/i18n/routing';
 
 export function Sidebar() {

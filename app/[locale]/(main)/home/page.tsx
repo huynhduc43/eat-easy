@@ -1,9 +1,10 @@
-import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 
+import { getTranslations } from 'next-intl/server';
+
+import { TMeal } from '@/app/[locale]/(main)/recipes/types';
 import { ContentLayout } from '@/app/components';
 import { apiConfig } from '@/config';
-import { TMeal } from '@/app/[locale]/(main)/recipes/types';
 import { Link } from '@/i18n/routing';
 
 async function getRandomMeals(): Promise<{ meals: TMeal[] }> {

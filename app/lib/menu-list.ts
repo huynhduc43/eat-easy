@@ -1,5 +1,6 @@
-import { Messages } from '@/global';
 import { LucideIcon, BookText, Heart, House } from 'lucide-react';
+
+import { Messages } from '@/global';
 
 type Submenu = {
   href: string;

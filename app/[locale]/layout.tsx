@@ -1,14 +1,18 @@
 import { ReactNode } from 'react';
+
 import type { Metadata, Viewport } from 'next';
-import { ThemeProvider } from 'next-themes';
+
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
+import { ThemeProvider } from 'next-themes';
 
-import { mulish } from '@/app/fonts';
 import SplashScreen, { ScrollToTopButton } from '@/app/components';
+import { mulish } from '@/app/fonts';
 import { routing } from '@/i18n/routing';
 
 import '../globals.css';
+
+import { Toaster } from '../components/common/toaster';
 
 export const metadata: Metadata = {
   title: 'EatEasy',
@@ -45,6 +49,7 @@ export default async function RootLayout({
           <ThemeProvider attribute="class">{children}</ThemeProvider>
         </NextIntlClientProvider>
         <ScrollToTopButton />
+        <Toaster />
       </body>
     </html>
   );
