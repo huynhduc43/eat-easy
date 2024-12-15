@@ -17,6 +17,7 @@ import {
   FormField,
   FormControl,
 } from '@/app/components/common';
+import useAuthStore from '@/app/hooks/use-auth';
 import { login } from '@/app/lib/actions/auth';
 import { ERROR_TOAST_DURATION_MS } from '@/common/constants';
 import { toast } from '@/hooks/use-toast';
@@ -32,8 +33,8 @@ export default function LoginPage() {
       password: '',
     },
   });
-
   const [state, formAction] = useFormState(login, null);
+  const { setAccessToken } = useAuthStore();
 
   const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
     const valid = await form.trigger();
@@ -57,8 +58,9 @@ export default function LoginPage() {
       return;
     }
 
+    setAccessToken(state.data.accessToken);
     router.push('/home');
-  }, [state, router, t]);
+  }, [state, router, t, setAccessToken]);
 
   return (
     <div className="grid h-[calc(100vh_-_80px)] place-items-center">
