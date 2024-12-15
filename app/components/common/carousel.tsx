@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-literals */
 'use client';
 
 import * as React from 'react';
@@ -11,10 +10,6 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import { Button } from '@/app/components/common/button';
 import { cn } from '@/app/lib/utils';
-
-/* eslint-disable react/jsx-no-literals */
-
-/* eslint-disable react/jsx-no-literals */
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -225,7 +220,7 @@ const CarouselPrevious = React.forwardRef<
       {...props}
     >
       <ArrowLeftIcon className="h-4 w-4" />
-      <span className="sr-only">Previous slide</span>
+      <span className="sr-only">{'Previous slide'}</span>
     </Button>
   );
 });
@@ -254,7 +249,7 @@ const CarouselNext = React.forwardRef<
       {...props}
     >
       <ArrowRightIcon className="h-4 w-4" />
-      <span className="sr-only">Next slide</span>
+      <span className="sr-only">{'Next slide'}</span>
     </Button>
   );
 });
@@ -283,7 +278,7 @@ const PrevButton = React.forwardRef<
       {...props}
     >
       <ArrowLeft strokeWidth={3} className="h-4 w-4" />
-      <span className="sr-only">Previous slide</span>
+      <span className="sr-only">{'Previous slide'}</span>
     </Button>
   );
 });
@@ -312,7 +307,7 @@ const NextButton = React.forwardRef<
       {...props}
     >
       <ArrowRight strokeWidth={3} className="h-4 w-4" />
-      <span className="sr-only">Next slide</span>
+      <span className="sr-only">{'Next slide'}</span>
     </Button>
   );
 });

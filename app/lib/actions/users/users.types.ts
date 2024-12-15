@@ -1,16 +1,13 @@
-import { PageInfo } from '@/app/lib/actions/nocodb.type';
+import { BaseEntity, PageInfo } from '@/app/lib/actions/nocodb.type';
 import { Role } from '@/common/enums';
 import { ApiResponse } from '@/common/types';
 
 export type CheckUserExistsResponse = ApiResponse<{ isExist: boolean }>;
 
-export type User = {
-  Id: number;
+export type User = BaseEntity & {
   email: string;
   password: string;
   role: Role;
-  CreatedAt: string;
-  UpdatedAt: string;
 };
 
 export type Stats = {
@@ -22,3 +19,5 @@ export type GetUsersResponse = {
   pageInfo: PageInfo;
   stats: Stats;
 };
+
+export type GetUserByEmailResponse = ApiResponse<User | null>;
