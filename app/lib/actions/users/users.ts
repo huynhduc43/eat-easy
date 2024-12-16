@@ -70,3 +70,33 @@ export async function getUserByEmail(
     };
   }
 }
+
+export async function getUserById(id: string): Promise<GetUserByEmailResponse> {
+  const t = await getTranslations('Common');
+
+  try {
+    const res = await nocodb.get<GetUsersResponse>(
+      `/tables/${USERS_TABLE_ID}/records?where=(Id,eq,${id})`
+    );
+
+    if (res.data.list.length > 0) {
+      return {
+        success: true,
+        data: res.data.list[0],
+      };
+    }
+
+    return {
+      success: true,
+      data: null,
+    };
+  } catch (error) {
+    // TODO: Handle logging
+    console.log('🚀 ~ getUserById error:', error);
+
+    return {
+      success: false,
+      error: t('error.something_went_wrong'),
+    };
+  }
+}
