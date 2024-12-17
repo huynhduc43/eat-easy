@@ -1,6 +1,6 @@
 'use server';
 
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { getTranslations } from 'next-intl/server';
 
 import { SignUpSchema } from '@/app/[locale]/(auth)/sign-up/sign-up-schema';
