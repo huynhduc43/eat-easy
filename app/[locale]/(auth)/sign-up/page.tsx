@@ -76,7 +76,7 @@ export default function SignUp() {
 
   return (
     <div className="grid h-[calc(100vh_-_80px)] place-items-center">
-      <div className="w-[480px]">
+      <div className="w-full sm:w-[480px] px-4 sm:px-0">
         <div className="mb-4 text-center">
           <h1 className="text-4xl text-my-neutral-800 dark:text-my-neutral-100">
             {t('getting_started')}
@@ -87,7 +87,10 @@ export default function SignUp() {
         </div>
         <div className="flex justify-center mb-10">
           <span>{t('already_have_an_account')}&nbsp;</span>
-          <Link href="/login" className="text-my-primary-600 font-bold">
+          <Link
+            href="/login"
+            className="text-my-primary-600 dark:text-my-secondary-800 font-bold"
+          >
             {t('login_now')}
           </Link>
         </div>
