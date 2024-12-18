@@ -54,10 +54,10 @@ export default function SearchBar({ onSearch }: TSearchBarProps) {
         )}
       </div>
 
-      <Button className="h-[54px] rounded-2xl text-my-neutral-0">
+      {/* <Button className="h-[54px] rounded-2xl text-my-neutral-0">
         <SlidersHorizontal className="mr-[10px]" />
         {t('filters')}
-      </Button>
+      </Button> */}
     </div>
   );
 }
