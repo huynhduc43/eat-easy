@@ -13,9 +13,10 @@ import {
   TooltipProvider,
 } from '@/app/components/common';
 import { CollapseMenuButton } from '@/app/components/sidebar';
+import { logout } from '@/app/lib/actions/auth';
 import { getMenuList } from '@/app/lib/menu-list';
 import { cn } from '@/app/lib/utils';
-import { Link } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 
 interface MenuProps {
   isOpen: boolean | undefined;
@@ -25,6 +26,12 @@ export function Menu({ isOpen }: MenuProps) {
   const pathname = usePathname();
   const menuList = getMenuList(pathname);
   const t = useTranslations('Layout.sidebar');
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await logout();
+    router.push('/login');
+  };
 
   return (
     <ScrollArea className="text-my-neutral-0 [&>div>div[style]]:!block">
@@ -145,7 +152,7 @@ export function Menu({ isOpen }: MenuProps) {
                         ? 'group flex cursor-pointer items-center px-0'
                         : 'flex h-12 w-12'
                     )}
-                    onClick={() => console.log('Logout called')}
+                    onClick={handleLogout}
                   >
                     <span
                       className={cn(

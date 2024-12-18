@@ -1,6 +1,8 @@
 'use server';
 
-import bcrypt from 'bcrypt';
+import { cookies } from 'next/headers';
+
+import bcrypt from 'bcryptjs';
 import { getTranslations } from 'next-intl/server';
 
 import { SignUpSchema } from '@/app/[locale]/(auth)/sign-up/sign-up-schema';
@@ -120,4 +122,9 @@ export async function login(
     success: true,
     data: tokens,
   };
+}
+
+export async function logout() {
+  cookies().delete('accessToken');
+  cookies().delete('refreshToken');
 }

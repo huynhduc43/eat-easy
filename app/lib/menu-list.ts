@@ -1,4 +1,4 @@
-import { LucideIcon, BookText, Heart, House } from 'lucide-react';
+import { LucideIcon, BookText, House } from 'lucide-react';
 
 import { Messages } from '@/global';
 
@@ -47,17 +47,18 @@ export function getMenuList(pathname: string): Group[] {
         },
       ],
     },
-    {
-      groupLabel: '',
-      menus: [
-        {
-          href: '/favorites',
-          label: 'favorites',
-          active: pathname.includes('/favorites'),
-          icon: Heart,
-          submenus: [],
-        },
-      ],
-    },
+    // TODO: Implement favorites page
+    // {
+    //   groupLabel: '',
+    //   menus: [
+    //     {
+    //       href: '/favorites',
+    //       label: 'favorites',
+    //       active: pathname.includes('/favorites'),
+    //       icon: Heart,
+    //       submenus: [],
+    //     },
+    //   ],
+    // },
   ];
 }

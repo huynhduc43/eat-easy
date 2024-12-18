@@ -1,9 +1,19 @@
 import { ReactNode } from 'react';
 
+import { setRequestLocale } from 'next-intl/server';
+
 import { AuthNavbar } from '@/app/components';
 import { cn } from '@/app/lib/utils';
 
-export default function AuthLayout({ children }: { children: ReactNode }) {
+export default function AuthLayout({
+  children,
+  params: { locale },
+}: {
+  children: ReactNode;
+  params: { locale: string };
+}) {
+  setRequestLocale(locale);
+
   return (
     <>
       <AuthNavbar />

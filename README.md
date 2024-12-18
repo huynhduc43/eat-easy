@@ -52,6 +52,41 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 └── tsconfig.json        # TypeScript configuration
 ```
 
+## Features
+
+### Multi-Language Support 🌐
+
+- Switch between English and Vietnamese interfaces
+- Language switcher in navigation
+- Route-based locale handling
+
+### Theme Customization 🎨
+
+- Light and Dark mode support
+- Persistent theme preferences
+- Dynamic theme switching
+
+### User Authentication 🔒
+
+- JWT-based authentication
+- Login and signup functionality
+- Protected routes
+- Persistent session management
+
+### Navigation & Layout 📱
+
+- Responsive sidebar navigation
+- Collapsible menu system
+- Mobile-optimized interface
+- Smart layout management
+
+### User Experience 🎯
+
+- Toast notifications system
+- Form validation with error messages
+- Loading states and indicators
+- Smooth transitions
+
 ## Getting Started
 
 First, run the development server:

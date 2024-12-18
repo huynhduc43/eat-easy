@@ -52,14 +52,19 @@
         "invalid_email": "Địa chỉ email không hợp lệ",
         "password_min_length": "Mật khẩu phải dài ít nhất 8 ký tự",
         "password_complexity": "Mật khẩu phải bao gồm ít nhất một chữ cái viết hoa, một chữ cái viết thường, một số và một ký tự đặc biệt"
+      },
+      "placeholder": {
+        "email": "Email",
+        "password": "Mật khẩu"
       }
     },
     "error": {
       "email_already_exists": "Email đã tồn tại"
     },
-    "redirecting_to_login": "Đang chuyển hướng đến đăng nhập..."
+    "redirecting_to_login": "Đang chuyển hướng đến đăng nhập...",
+    "already_have_an_account": "Đã có tài khoản?",
+    "login_now": "Đăng nhập ngay"
   },
-
   "Login": {
     "login": "Đăng nhập",
     "welcome_back": "Chào mừng trở lại! 👋",
