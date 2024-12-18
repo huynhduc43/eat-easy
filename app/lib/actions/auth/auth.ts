@@ -1,5 +1,7 @@
 'use server';
 
+import { cookies } from 'next/headers';
+
 import bcrypt from 'bcryptjs';
 import { getTranslations } from 'next-intl/server';
 
@@ -120,4 +122,9 @@ export async function login(
     success: true,
     data: tokens,
   };
+}
+
+export async function logout() {
+  cookies().delete('accessToken');
+  cookies().delete('refreshToken');
 }

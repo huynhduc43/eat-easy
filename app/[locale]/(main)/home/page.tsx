@@ -28,7 +28,7 @@ export default async function Home() {
   return (
     <ContentLayout title={t('title')} className="mx-6 sm:mx-[42px]">
       <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:grid-rows-1">
-        <div className="relative top-[132px] z-10 lg:col-span-6 xl:top-40">
+        <div className="relative top-[132px] z-10 lg:col-span-6 xl:top-40 pb-4">
           <h2 className="text-3xl font-bold text-my-secondary-700">
             {t('Todays_Meal')}
           </h2>

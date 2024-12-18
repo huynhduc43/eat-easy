@@ -1,3 +1,5 @@
+'use server';
+
 import { getTranslations } from 'next-intl/server';
 
 import nocodb, { USERS_TABLE_ID } from '@/app/lib/actions/nocodb';

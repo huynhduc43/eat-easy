@@ -1,4 +1,4 @@
-export const PUBLIC_ROUTES = ['/login', '/home', '/'] as const;
+export const PUBLIC_ROUTES = ['/login', '/sign-up'] as const;
 
 export const PUBLIC_PATHS = [
   '/api/auth',
